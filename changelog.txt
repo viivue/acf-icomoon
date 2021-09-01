@@ -1,60 +1,63 @@
-# Changelog
+== Changelog ==
 
-All notable changes to this project will be documented in this file.
+= 3.1 =
+*Release Date - 24 August 2021*
 
-## Changelog
+* Add selected icon using PHP instead of JS.
 
-### v3.2 - 2021-09-xx
-
-- Revise and cleanup code
-
-### v3.1 - 2021-08-24
-
-- Add selected icon using PHP instead of JS.
-
-### v3.0 - 2021-08-03
+= 3.0 =
+*Release Date - 03 August 2021*
 
 - Fix bug: not re-init script on dynamic elements (after duplicating or in ACF tabs)
 - Refactor js
 
-### v2.2 - 2021-06-08
+= 2.2 =
+*Release Date - 08 June 2021*
 
 - Update CSS for VC Param
 - Exit function when element is not visible
 
-### v2.0.1 - 2021-01-28
+= 2.0.1 =
+*Release Date - 28 January 2021*
 
 - Fix popup not show when add more item in ACF repeater (due to ACF always has a pre-appended clone item)
 
-### v2.0.0 - 2021-01-11
+= 2.0.0 =
+*Release Date - 11 January 2021*
 
 - Re-build the whole plugin to use the same structure with VC Param Icomoon
 - Check popup position left/right
 - Update UI
 
-### v1.0.5 - 2020-12-31
+= 1.0.5 =
+*Release Date - 31 December 2020*
 
 - Update UI
 
-### v1.0.4 - 2020-12-25
+= 1.0.4 =
+*Release Date - 25 December 2020*
 
 - Check array key exists to prevent PHP Warning
 
-### v1.0.3 - 2020-08-12
+= 1.0.3 =
+*Release Date - 12 August 2020*
 
 - Replace get_stylesheet_directory_uri with get_stylesheet_directory to get the file path
 - Add conditional logic file_exists in $path variable
 
-### v1.0.2 - 2020-08-05
+= 1.0.2 =
+*Release Date - 05 August 2020*
 
 - Check file exists before get file content.
 - Replace get_template_directory_uri with get_stylesheet_directory_uri.
 
-### v1.0.1 - 2020-06-04
+= 1.0.1 =
+*Release Date - 04 June 2020*
 
 - Auto get selection.json path if value is empty
 
-### v1.0.0 - 2020-05-20
+= 1.0.0 =
+*Release Date - 20 May 2020*
 
 - Remove all fields that have not worked yet.
 - Add option to return icon class.
