@@ -1,0 +1,165 @@
+/****************************
+ * FW Icomoon Select 3.1
+****************************/
+.fw-icomoon-select {position:relative; z-index:9;}
+.fw-icomoon-select.popup-open {z-index:99;}
+.fw-icomoon-select__field, .fw-icomoon-select__field-result {
+    display:flex; justify-content:space-between; align-items:center;
+}
+.fw-icomoon-select__field-col.left {width:100%; position:relative;}
+.fw-icomoon-select__field-col.right {padding-left:3px;}
+
+/* result */
+.fw-icomoon-select__field-result {
+    justify-content:flex-start; padding-left:10px;
+    border-radius:4px; border:1px solid #7e8993; height:28px; line-height:1;
+    transition:all .3s ease; cursor:pointer;
+}
+.fw-icomoon-select__field-result .icon-svg svg {width:18px; height:18px;}
+.fw-icomoon-select__field-result .icon-name {padding-left:10px;}
+.fw-icomoon-select__field-result:hover {box-shadow:0 0 0 1px #6c75df;}
+
+/* button remove */
+.fw-icomoon-select:not(.empty) .fw-icomoon-select__field-remove {display:block;}
+.fw-icomoon-select__field-remove {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    display: none;
+    background-color: red;
+    color: #fff !important;
+    border-radius: 0 4px 4px 0;
+    height: 100%;
+    width: 30px;
+    line-height: 26px;
+    text-align: center;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+.fw-icomoon-select__field-remove:not(:hover) {background-color:transparent; color:red !important;}
+
+/* button select */
+.fw-icomoon-select__field-button button {min-width:95px; text-align:center; display:block;}
+.fw-icomoon-select:not(.popup-open) .fw-icomoon-select__field-button .cancel {display:none;}
+.fw-icomoon-select.popup-open .fw-icomoon-select__field-button .select {display:none;}
+
+/* popup */
+.fw-icomoon-select:not(.popup-open) .fw-icomoon-select__popup {display:none;}
+.fw-icomoon-select.popup-top .fw-icomoon-select__popup {bottom:100%;}
+
+.fw-icomoon-select.popup-bottom .fw-icomoon-select__popup {
+    top: 100%;
+}
+
+.fw-icomoon-select.popup-right .fw-icomoon-select__popup {
+    left: auto;
+    right: 0;
+}
+
+.fw-icomoon-select__popup {
+    position: absolute;
+    left: 0;
+    z-index: 20;
+    margin: 3px 0;
+    width: 300px;
+    max-height: 300px;
+    overflow: auto;
+    border-radius: 4px;
+    border: 1px solid #7e8993;
+    background-color: rgb(235, 235, 240);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .15);
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.fw-icomoon-select__popup-head {
+    text-align: center;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* icon list */
+ul.fw-icomoon-select__icons {
+    list-style: none;
+    margin: -2px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul.fw-icomoon-select__icons li {
+    padding: 2px;
+    margin: 0;
+    width: 12.5%;
+    box-sizing: border-box;
+}
+
+ul.fw-icomoon-select__icons li a {
+    width: 100%;
+    height: 30px;
+    border-radius: 4px;
+    transition: all .3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul.fw-icomoon-select__icons li a svg {
+    width: 18px;
+    height: 18px;
+}
+
+ul.fw-icomoon-select__icons li a:hover {
+    background-color: #fff;
+}
+
+ul.fw-icomoon-select__icons li a.active,
+ul.fw-icomoon-select__icons li a:focus {
+    box-shadow: 0 0 0 1px #6c75df;
+    background-color: #fff;
+}
+
+/****************************
+ * FW Icomoon Select - for VC Param
+****************************/
+.vc_shortcode-param .fw-icomoon-select__field-result {
+    height: 45px;
+    background-color: #fff;
+}
+
+.vc_shortcode-param .fw-icomoon-select__field-button button {
+    height: 45px;
+}
+
+.vc_shortcode-param .fw-icomoon-select__field-remove {
+    line-height: 45px;
+}
+
+/* icon list */
+.vc_shortcode-param ul.fw-icomoon-select__icons li {
+    width: 20%;
+}
+
+.vc_shortcode-param ul.fw-icomoon-select__icons li a {
+    height: 40px;
+}
+
+.vc_shortcode-param ul.fw-icomoon-select__icons li a svg {
+    width: 35px;
+    height: 25px;
+}
+
+/* popup */
+.vc_shortcode-param .fw-icomoon-select__popup {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    max-width: 300px;
+    max-height: 250px;
+}
