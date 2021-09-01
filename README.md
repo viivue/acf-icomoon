@@ -11,5 +11,5 @@
 
 ## Changelog
 
-A complete listing of all notable changes to Lipsum Dynamo are documented
+A complete listing of all notable changes to Advanced Custom Fields: Icomoon are documented
 in [CHANGELOG.md](https://github.com/viivue/acf-icomoon/blob/master/CHANGELOG.md).
