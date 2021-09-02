@@ -1,5 +1,5 @@
 === Advanced Custom Fields: Icomoon ===
-Contributors: daomapsieucap
+Contributors: viivue, daomapsieucap
 Tags: Advanced Custom Fields, ACF, Icomoon
 Requires at least: 4.7
 Tested up to: 5.8
@@ -25,6 +25,4 @@ This ACF field type is compatible with:
 == Changelog ==
 
 = 3.2 =
-*Release Date - xx September 2021*
-
 - Revise and cleanup code to publish plugin
