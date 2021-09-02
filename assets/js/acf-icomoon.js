@@ -1,10 +1,10 @@
 (function($){
     /**
-     * Icomoon Select v3.1
+     * Icomoon Select
      */
-    function fw_icomoon_select(){
+    function viivue_icomoon_select(){
         const dev = false;
-        if(dev) console.log('init fw_icomoon_select')
+        if(dev) console.log('init viivue_icomoon_select')
 
         // update value for the given field
         function update($field, value = null){
@@ -104,6 +104,6 @@
     }
 
     // init
-    acf.add_action('ready', fw_icomoon_select);
+    acf.add_action('ready', viivue_icomoon_select);
 
 })(jQuery);

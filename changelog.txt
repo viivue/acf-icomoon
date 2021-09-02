@@ -1,7 +1,7 @@
 == Changelog ==
 
 = 3.2 =
-*Release Date - xx September 2021*
+*Release Date - 02 September 2021*
 
 - Revise and cleanup code to publish plugin
 - Fixed: Custom selection.json path is not working

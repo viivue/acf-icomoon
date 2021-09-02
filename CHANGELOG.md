@@ -4,11 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
-### v3.2 - 2021-09-xx
+### v3.2 - 2021-09-02
 
 - Revise and cleanup code to publish plugin
 - Fixed: Custom selection.json path is not working
-- New: Add WPBakery Page Builder Icomoon Param Type
+- New: Add WPBakery Page Builder Icomoon Param Type for developers
 
 ### v3.1 - 2021-08-24
 

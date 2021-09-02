@@ -1,5 +1,5 @@
 /****************************
- * FW Icomoon Select 3.1
+ * Icomoon Select
 ****************************/
 .viivue-icomoon-select {position:relative; z-index:9;}
 .viivue-icomoon-select.popup-open {z-index:99;}
@@ -155,11 +155,11 @@ ul.viivue-icomoon-select__icons li a:focus {
 
 /* popup */
 .vc_shortcode-param .viivue-icomoon-select__popup {
-    position: relative;
-    top: auto;
-    bottom: auto;
-    left: auto;
-    width: 100%;
-    max-width: 300px;
-    max-height: 250px;
+    position:relative;
+    top:auto;
+    bottom:auto;
+    left:auto;
+    width:100%;
+    max-width:300px;
+    max-height:250px;
 }
