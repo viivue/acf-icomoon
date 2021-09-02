@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### v3.2 - 2021-09-xx
 
 - Revise and cleanup code to publish plugin
+- Fixed: Custom selection.json path is not working
 
 ### v3.1 - 2021-08-24
 

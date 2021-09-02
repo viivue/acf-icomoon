@@ -7,7 +7,7 @@
 1. Download Advanced Custom Fields: Icomoon plugin
 2. Upload it to your wp-content/plugins directory
 3. Go to CMS admin plugins list and activate the plugin
-4. Go to Field Groups > Create new Field and choose Icomoon Type.
+4. Go to Field Groups > Create new Field and choose Icomoon Type in Content Group.
 
 ## Changelog
 

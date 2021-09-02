@@ -8,18 +8,18 @@
 
         // update value for the given field
         function update($field, value = null){
-            const $input = $field.find('.fw-icomoon-select__input input');
-            const $resultSvg = $field.find(".fw-icomoon-select__field-result .icon-svg");
-            const $resultName = $field.find(".fw-icomoon-select__field-result .icon-name");
+            const $input = $field.find('.viivue-icomoon-select__input input');
+            const $resultSvg = $field.find(".viivue-icomoon-select__field-result .icon-svg");
+            const $resultName = $field.find(".viivue-icomoon-select__field-result .icon-name");
             value = value === null ? $input.val() : value;
 
             let svg = '';
             if(value.length){
                 // has value
-                let $icon = $field.find('a[data-fw-value="' + value + '"]');
+                let $icon = $field.find('a[data-icomoon-value="' + value + '"]');
                 $field.removeClass('empty');
                 svg = $icon.html();
-                $field.find('[data-fw-value].active').removeClass('active');
+                $field.find('[data-icomoon-value].active').removeClass('active');
                 $icon.addClass("active");
             }else{
                 // empty
@@ -35,14 +35,14 @@
         }
 
         // update on load
-        $('.fw-icomoon-select').each(function(){
+        $('.viivue-icomoon-select').each(function(){
             update($(this));
         });
 
         // show/hide popup
-        $(document).on('click', '[data-fw="popup-trigger"]', function(e){
-            const $field = $(e.target).closest('.fw-icomoon-select');
-            const $popup = $field.find('.fw-icomoon-select__popup');
+        $(document).on('click', '[data-icomoon="popup-trigger"]', function(e){
+            const $field = $(e.target).closest('.viivue-icomoon-select');
+            const $popup = $field.find('.viivue-icomoon-select__popup');
 
             e.preventDefault();
             $field.toggleClass("popup-open");
@@ -72,20 +72,20 @@
         });
 
         // select icon
-        $(document).on('click', '[data-fw="select"]', function(e){
-            const $field = $(e.target).closest('.fw-icomoon-select');
-            const $this = $(e.target).closest('[data-fw="select"]');
+        $(document).on('click', '[data-icomoon="select"]', function(e){
+            const $field = $(e.target).closest('.viivue-icomoon-select');
+            const $this = $(e.target).closest('[data-icomoon="select"]');
 
             e.preventDefault();
-            if(dev) console.log('select icon:', $this.attr("data-fw-value"))
+            if(dev) console.log('select icon:', $this.attr("data-icomoon-value"))
 
             $field.removeClass("popup-open");
-            update($field, $this.attr("data-fw-value"));
+            update($field, $this.attr("data-icomoon-value"));
         });
 
         // remove value
-        $(document).on('click', '[data-fw="remove-value"]', function(e){
-            const $field = $(e.target).closest('.fw-icomoon-select');
+        $(document).on('click', '[data-icomoon="remove-value"]', function(e){
+            const $field = $(e.target).closest('.viivue-icomoon-select');
 
             e.preventDefault();
             if(dev) console.log('remove icon')
@@ -96,9 +96,9 @@
 
         // click outside
         $(document).click(function(e){
-            const $field = $(e.target).closest('.fw-icomoon-select');
+            const $field = $(e.target).closest('.viivue-icomoon-select');
             if(!$field.length){
-                $('.fw-icomoon-select').removeClass("popup-open");
+                $('.viivue-icomoon-select').removeClass("popup-open");
             }
         });
     }

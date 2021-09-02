@@ -28,24 +28,14 @@ if(!defined('ABSPATH')){
 define('ACFICOMOON_VERSION', '3.2');
 define("ACFICOMOON_DIR", plugin_dir_path(__FILE__));
 define("ACFICOMOON_ASSETS_URL", plugin_dir_url(__FILE__) . 'assets/');
+define("ACFICOMOON_STYLESHEET_DIR", get_stylesheet_directory());
 
-if(!class_exists('ViiVue_ACF_Icomoon')){
-	
-	class ViiVue_ACF_Icomoon{
-		function __construct(){
-			add_action('acf/include_field_types', array($this, 'include_field_types')); // v5
-		}
-		
-		/*
-		*  This function will include the field type class
-		*/
-		
-		function include_field_types($version = false){
-			include_once('inc/fields.php');
-		}
-		
-	}
-	
-	// initialize
-	new ViiVue_ACF_Icomoon();
-}
+/**
+ * Include functions
+ */
+
+// helper
+include_once(ACFICOMOON_DIR . 'includes/helper.php');
+
+// main functions
+include_once(ACFICOMOON_DIR . 'includes/acf-icomoon.php');
