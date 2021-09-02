@@ -5,6 +5,7 @@
 
 - Revise and cleanup code to publish plugin
 - Fixed: Custom selection.json path is not working
+- New: Add WPBakery Page Builder Icomoon Param Type for developers
 
 = 3.1 =
 *Release Date - 24 August 2021*

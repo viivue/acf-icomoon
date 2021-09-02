@@ -39,3 +39,15 @@ include_once(ACFICOMOON_DIR . 'includes/helper.php');
 
 // main functions
 include_once(ACFICOMOON_DIR . 'includes/acf-icomoon.php');
+
+/**
+ * Init Functions
+ */
+
+add_action('init', 'viivue_icomoon_init');
+function viivue_icomoon_init(){
+	// WPBakery Page Builder Param
+	if(is_plugin_active('js_composer/js_composer.php')){
+		include_once(ACFICOMOON_DIR . 'includes/js_composer.php');
+	}
+}
