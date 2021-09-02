@@ -1,4 +1,4 @@
-=== Advanced Custom Fields: Icomoon ===
+=== Support For Icomoon with Advanced Custom Fields ===
 Contributors: viivue, daomapsieucap
 Tags: Advanced Custom Fields, ACF, Icomoon
 Requires at least: 4.7
@@ -17,7 +17,7 @@ This ACF field type is compatible with:
 
 == Installation ==
 
-1. Download Advanced Custom Fields: Icomoon plugin
+1. Download Support For Icomoon with Advanced Custom Fields plugin
 2. Upload it to your wp-content/plugins directory
 3. Go to CMS admin plugins list and activate the plugin
 4. Go to Field Groups > Create new Field and choose Icomoon Type in Content Group.
