@@ -9,6 +9,12 @@
 3. Go to CMS admin plugins list and activate the plugin
 4. Go to Field Groups > Create new Field and choose Icomoon Type in Content Group.
 
+## Compatibility
+
+This ACF field type is compatible with:
+
+* ACF 5.7+
+
 ## Changelog
 
 A complete listing of all notable changes to Advanced Custom Fields: Icomoon are documented
