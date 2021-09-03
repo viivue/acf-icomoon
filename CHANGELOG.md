@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
-### v3.2 - 2021-09-02
+### v3.2 - 2021-09-03
 
 - Revise and cleanup code to publish plugin
 - Fixed: Custom selection.json path is not working

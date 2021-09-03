@@ -1,5 +1,5 @@
 === Support For Icomoon with Advanced Custom Fields ===
-Contributors: viivue, daomapsieucap
+Contributors: viivue, daomapsieucap, phucbm
 Tags: Advanced Custom Fields, ACF, Icomoon
 Requires at least: 4.7
 Tested up to: 5.8
@@ -26,3 +26,5 @@ This ACF field type is compatible with:
 
 = 3.2 =
 - Revise and cleanup code to publish plugin
+- Fixed: Custom selection.json path is not working
+- New: Add WPBakery Page Builder Icomoon Param Type for developers
