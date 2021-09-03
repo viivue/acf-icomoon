@@ -2,7 +2,7 @@
  * Icomoon Select
 ****************************/
 .viivue-icomoon-select {position:relative; z-index:9;}
-.viivue-icomoon-select.popup-open {z-index:99;}
+.viivue-icomoon-select.popup-open {z-index:9000;}
 .viivue-icomoon-select__field, .viivue-icomoon-select__field-result {
     display:flex; justify-content:space-between; align-items:center;
 }
