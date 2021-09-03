@@ -22,6 +22,11 @@ This ACF field type is compatible with:
 3. Go to CMS admin plugins list and activate the plugin
 4. Go to Field Groups > Create new Field and choose Icomoon Type in Content Group.
 
+== Screenshots ==
+
+1. New field type Icomoon in ACF
+2. Icomoon field type display in CMS
+
 == Changelog ==
 
 = 3.2 =
