@@ -1,11 +1,22 @@
 <p align="center">
  <img width="100px" src="https://ps.w.org/acf-icomoon/assets/icon.svg" align="center" alt="Icomoon for Advanced Custom Fields" />
- <h1 align="center">IcoMoon for Advanced Custom Fields</h2>
+ <h1 align="center" style="border:none; padding:0;">IcoMoon for Advanced Custom Fields</h2>
  <p align="center">A new ACF field that allows to select icon from <a href="https://icomoon.io" target="_blank">IcoMoon</a> json.</p>
+ <p align="center">
+ <a href="https://wordpress.org/plugins/acf-icomoon/">
+ <img src="https://img.shields.io/badge/-WordPress-0273A9">
+ </a>
+  <a href="https://icomoon.io">
+ <img src="https://img.shields.io/badge/-IcoMoon-29C3F9">
+ </a>
+  <a href="https://www.advancedcustomfields.com/">
+ <img src="https://img.shields.io/badge/-Advanced Custom Fields-02E4BC">
+ </a>
+</p>
 </p>
 
 
-## Installation
+## Getting started
 
 ### Download
 
