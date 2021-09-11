@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
+### v3.3 - 2021-09-12
+
+- Fixed: Error when activate plugin without WPBakery Page Builder installed
+
 ### v3.2 - 2021-09-03
 
 - Revise and cleanup code to publish plugin

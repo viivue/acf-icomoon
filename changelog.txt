@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 3.3 =
+*Release Date - 12 September 2021*
+
+- Fixed: Error when activate plugin without WPBakery Page Builder installed
+
 = 3.2 =
 *Release Date - 03 September 2021*
 
