@@ -30,6 +30,7 @@ This ACF field type is compatible with:
 == Changelog ==
 
 = 3.3 =
-*Release Date - 12 September 2021*
+*Release Date - 11 September 2021*
 
 - Fixed: Error when activate plugin without WPBakery Page Builder installed
+- Added: Notice when Advanced Custom Fields is not activated
