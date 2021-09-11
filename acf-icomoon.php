@@ -51,3 +51,19 @@ function viivue_icomoon_init(){
 		include_once(ACFICOMOON_DIR . 'includes/js_composer.php');
 	}
 }
+
+/**
+ * Admin notices
+ */
+
+add_action('admin_notices', 'viivue_icomoon_admin_notices');
+function viivue_icomoon_admin_notices(){
+	if(!function_exists('get_field')){
+		$notice = sprintf(__(
+			'Warning: Please activate plugin <a href="%s">Advanced Custom Fields</a> to use plugin Support For Icomoon with Advanced Custom Fields.',
+			'acf-icomoon'
+		), admin_url('plugins.php'));
+		
+		echo '<div class="notice notice-warning"><p>' . $notice . '</p></div>';
+	}
+}

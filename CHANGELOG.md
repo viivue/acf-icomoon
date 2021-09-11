@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### v3.3 - 2021-09-12
 
 - Fixed: Error when activate plugin without WPBakery Page Builder installed
+- Added: Notice when Advanced Custom Fields is not activated
 
 ### v3.2 - 2021-09-03
 

@@ -4,6 +4,7 @@
 *Release Date - 12 September 2021*
 
 - Fixed: Error when activate plugin without WPBakery Page Builder installed
+- Added: Notice when Advanced Custom Fields is not activated
 
 = 3.2 =
 *Release Date - 03 September 2021*
