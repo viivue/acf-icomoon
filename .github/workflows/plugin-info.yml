@@ -5,7 +5,7 @@ on:
       - trunk
 jobs:
   trunk:
-    name: Push to trunk
+    name: 🎉 Push to trunk
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get the latest code
