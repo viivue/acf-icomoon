@@ -1,4 +1,4 @@
-name: Deploy to WordPress.org
+name: 🛸 Deploy to WordPress.org
 on:
   release:
     types: [ published ]
@@ -7,9 +7,10 @@ jobs:
     name: New release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: 🚚 Get the latest code
         uses: actions/checkout@v2
-      - name: WordPress Plugin Deploy
+
+      - name: 🚀 WordPress Plugin Deploy
         id: deploy
         uses: 10up/action-wordpress-plugin-deploy@stable
         with:
@@ -18,7 +19,8 @@ jobs:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SLUG: ${{ secrets.SLUG }}
-      - name: Upload release asset
+
+      - name: 📋 Upload release asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
