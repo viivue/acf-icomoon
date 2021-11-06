@@ -199,7 +199,12 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 							$icon_name  = viivue_array_key_exists('name', $icon_props);
 							
 							// get svg (Format the SVG path)
-							$icon_svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="' . $icon_size . '" height="' . $icon_size . '" viewBox="0 0 1024 1024">';
+							$attr = 'width="' . $icon_size . '"';
+							$attr .= 'height="' . $icon_size . '"';
+							$attr .= 'viewBox="0 0 1024 1024"';
+							$attr .= 'preserveAspectRatio="xMidYMid meet"';
+							
+							$icon_svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" ' . $attr . '>';
 							$icon_svg .= '<title>' . $icon_name . '</title>';
 							foreach($icon_paths as $path){
 								$icon_svg .= '<path fill="#444" d="' . $path . '"></path>';
