@@ -7,9 +7,8 @@ if(!defined('ABSPATH')){
 if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 	class ViiVue_ACF_Field_Icomoon extends acf_field{
 		/**
-		 * Setup the field type data
+		 * Set up the field type data
 		 */
-		
 		function __construct(){
 			$this->name     = 'viivue_acf_icomoon';
 			$this->label    = __('Icomoon', 'acf-icomoon');
@@ -22,9 +21,8 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		
 		
 		/**
-		 * Create extra settings
+		 * Create settings for this fields in ACF
 		 */
-		
 		function render_field_settings($field){
 			// Admin field: Selection.json
 			acf_render_field_setting($field, array(
@@ -34,14 +32,14 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 				'name'         => 'selection_json_path'
 			));
 			
-			// Admin field: Return value
+			// Admin field: Return value type
 			acf_render_field_setting($field, array(
 				'label'        => __('Return value', 'acf-icomoon'),
 				'instructions' => __('Specify the returned value on front end', 'acf-icomoon'),
 				'type'         => 'radio',
 				'name'         => 'display_type',
 				'choices'      => array(
-					'icon'       => 'Icon element',
+					'icon'       => 'Icon element (HTML)',
 					'icon_class' => 'Icon class',
 					'svg'        => 'SVG element'
 				)
@@ -49,24 +47,29 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		}
 		
 		
-		/*
-		*  Create the HTML interface
-		*/
-		
+		/**
+		 *  Render HTML interface for ACF
+		 */
 		function render_field($field){
-			$choices    = $this->viivue_get_icomoon_json(viivue_array_key_exists('selection_json_path', $field));
-			$value      = esc_attr(viivue_array_key_exists('value', $field)); // selected value
-			$name       = esc_attr(viivue_array_key_exists('name', $field));
+			// list of icons
+			$choices = $this->viivue_get_icomoon_json(viivue_array_key_exists('selection_json_path', $field));
+			
+			// selected value
+			$value = esc_attr(viivue_array_key_exists('value', $field));
+			$name  = esc_attr(viivue_array_key_exists('name', $field));
+			
+			// ACF input field display in backend interface
 			$input_html = '<input type="hidden" name="' . $name . '" value="' . $value . '"/>';
 			
+			// output HTML
 			echo $this->viivue_icomoon_select_html($choices, $value, $input_html);
 		}
 		
-		/**
-		 * Icomoon select
-		 */
 		
-		function viivue_icomoon_select_html($icon_array, $value, $input_html, $vc_element = false){
+		/**
+		 * HTML for ACF and VC
+		 */
+		function viivue_icomoon_select_html($icon_array, $value, $input_html, $vc_element = false): string{
 			$count_text  = count($icon_array) . ' icons';
 			$id          = uniqid();
 			$active_icon = array();
@@ -143,10 +146,9 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		
 		
 		/**
-		 * Get icomoon array
+		 * Get array of icons from json
 		 */
-		
-		function viivue_get_icomoon_json($json_path = ''){
+		function viivue_get_icomoon_json($json_path = ''): array{
 			$icon_size  = 32;
 			$icon_array = array();
 			if(empty($json_path) || !file_exists($json_path)){
@@ -186,20 +188,19 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			return $icon_array;
 		}
 		
-		/*
-		*  Add assets, inherit from acf_field class
-		*/
 		
+		/**
+		 *  Add assets, inherit from acf_field class
+		 */
 		function input_admin_enqueue_scripts(){
 			wp_enqueue_style('viivue-acf-field-icomoon', ACFICOMOON_ASSETS_URL . "css/acf-icomoon.css", array('acf-input'), ACFICOMOON_VERSION);
 			wp_enqueue_script('viivue-acf-field-icomoon', ACFICOMOON_ASSETS_URL . "js/acf-icomoon.js", array('acf-input'), ACFICOMOON_VERSION);
 		}
 		
 		
-		/*
-		*  This filter is applied to the $value after it is loaded from the db before it is returned to the template
-		*/
-		
+		/**
+		 *  This filter is applied to the $value after it is loaded from the db before it is returned to the template
+		 */
 		function format_value($value, $post_id, $field){
 			if(empty($value)){
 				return $value;
@@ -215,13 +216,17 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			
 			$value = viivue_array_key_exists($value, $choices);
 			
+			// return icon class
 			if($display_type == 'icon_class'){
 				return viivue_array_key_exists('icon_class', $value);
 			}
+			
+			// return svg
 			if($display_type == 'svg'){
 				return viivue_array_key_exists('icon_svg', $value);
 			}
 			
+			// return icon html
 			return '<i class="' . viivue_array_key_exists('icon_class', $value) . '"></i>';
 		}
 		
