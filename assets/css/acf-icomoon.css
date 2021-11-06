@@ -1,82 +1,74 @@
 /****************************
  * Icomoon Select
 ****************************/
-.viivue-icomoon-select {position:relative; z-index:9;}
-.viivue-icomoon-select.popup-open {z-index:9000;}
-.viivue-icomoon-select__field, .viivue-icomoon-select__field-result {
-    display:flex; justify-content:space-between; align-items:center;
+.vii-icomoon {
+    position:relative; z-index:9;
+    --vico-right:110px;
+    --vico-left:calc(100% - var(--vico-right));
+    --vico-field-height:30px;
+    --vico-field-svg-size:20px;
 }
-.viivue-icomoon-select__field-col.left {width:100%; position:relative;}
-.viivue-icomoon-select__field-col.right {padding-left:3px;}
+.vii-icomoon * {box-sizing:border-box;}
+
+
+/****************************
+ * Icomoon Select - Custom Field
+****************************/
+.vii-icomoon__custom-field, .vii-icomoon__custom-field-result {display:flex; align-items:center;}
+.vii-icomoon__custom-field-col.left {width:var(--vico-left); position:relative;}
+.vii-icomoon__custom-field-col.right {width:var(--vico-right); padding-left:5px;}
 
 /* result */
-.viivue-icomoon-select__field-result {
+.vii-icomoon__custom-field-result {
     justify-content:flex-start; padding-left:10px;
-    border-radius:4px; border:1px solid #7e8993; height:28px; line-height:1;
+    border-radius:4px; border:1px solid #7e8993; height:var(--vico-field-height); line-height:1;
     transition:all .3s ease; cursor:pointer;
+    background-color:#fff;
 }
-.viivue-icomoon-select__field-result .icon-svg svg {width:18px; height:18px;}
-.viivue-icomoon-select__field-result .icon-name {padding-left:10px;}
-.viivue-icomoon-select__field-result:hover {box-shadow:0 0 0 1px #6c75df;}
+.vii-icomoon__custom-field-result .icon-svg svg {width:var(--vico-field-svg-size); height:var(--vico-field-svg-size); display:block;}
+.vii-icomoon__custom-field-result .icon-name {padding-left:10px;}
+.vii-icomoon__custom-field-result:hover {box-shadow:0 0 0 1px #6c75df;}
 
 /* button remove */
-.viivue-icomoon-select:not(.empty) .viivue-icomoon-select__field-remove {display:block;}
-.viivue-icomoon-select__field-remove {
-    position:absolute;
-    top:50%;
-    right:0;
-    transform:translateY(-50%);
-    text-decoration:none;
-    font-size:14px;
-    font-weight:700;
-    display:none;
-    background-color:red;
-    color:#fff !important;
-    border-radius:0 4px 4px 0;
-    height:100%;
-    width:30px;
-    line-height:26px;
-    text-align:center;
+.vii-icomoon:not(.empty) .vii-icomoon__custom-field-remove {display:block;}
+.vii-icomoon__custom-field-remove {
+    position:absolute; top:50%; right:0;
+    transform:translateY(-50%); display:none;
+    background-color:red; color:#fff !important;
+    border-radius:0 4px 4px 0; height:100%; width:var(--vico-field-height);
+    line-height:var(--vico-field-height); text-align:center; text-decoration:none;
+    font-size:14px; font-weight:700;
     transition:all .3s ease;
     cursor:pointer;
 }
-.viivue-icomoon-select__field-remove:not(:hover) {background-color:transparent; color:red !important;}
+.vii-icomoon__custom-field-remove:not(:hover) {background-color:transparent; color:red !important;}
 
 /* button select */
-.viivue-icomoon-select__field-button button {min-width:95px; text-align:center; display:block;}
-.viivue-icomoon-select:not(.popup-open) .viivue-icomoon-select__field-button .cancel {display:none;}
-.viivue-icomoon-select.popup-open .viivue-icomoon-select__field-button .select {display:none;}
+.vii-icomoon__custom-field-button button {text-align:center; display:block; width:100%; height:var(--vico-field-height);}
+.vii-icomoon:not(.popup-open) .vii-icomoon__custom-field-button .cancel {display:none;}
+.vii-icomoon.popup-open .vii-icomoon__custom-field-button .select {display:none;}
+
+
+/****************************
+ * Icomoon Select - Popup
+****************************/
+.vii-icomoon.popup-open {z-index:9000;}
 
 /* popup */
-.viivue-icomoon-select:not(.popup-open) .viivue-icomoon-select__popup {display:none;}
-.viivue-icomoon-select.popup-top .viivue-icomoon-select__popup {bottom:100%;}
+.vii-icomoon:not(.popup-open) .vii-icomoon__popup {display:none;}
+.vii-icomoon.popup-top .vii-icomoon__popup {bottom:100%;}
+.vii-icomoon.popup-bottom .vii-icomoon__popup {top:100%;}
+.vii-icomoon.popup-right .vii-icomoon__popup {left:auto; right:0;}
 
-.viivue-icomoon-select.popup-bottom .viivue-icomoon-select__popup {
-    top:100%;
-}
-
-.viivue-icomoon-select.popup-right .viivue-icomoon-select__popup {
-    left:auto;
-    right:0;
-}
-
-.viivue-icomoon-select__popup {
-    position:absolute;
-    left:0;
-    z-index:20;
-    margin:3px 0;
-    width:300px;
-    max-height:300px;
+.vii-icomoon__popup {
+    position:absolute; left:0; z-index:20;
+    padding:5px; margin:3px 0; width:300px; max-height:300px;
+    border-radius:4px; border:1px solid #7e8993;
+    background-color:rgb(235, 235, 240); box-shadow:0 0 10px 0 rgba(0, 0, 0, .15);
     overflow:auto;
-    border-radius:4px;
-    border:1px solid #7e8993;
-    background-color:rgb(235, 235, 240);
-    box-shadow:0 0 10px 0 rgba(0, 0, 0, .15);
-    padding:5px;
-    box-sizing:border-box;
 }
 
-.viivue-icomoon-select__popup-head {
+.vii-icomoon__popup-head {
     text-align:center;
     margin-bottom:5px;
     padding-bottom:5px;
@@ -84,82 +76,48 @@
 }
 
 /* icon list */
-ul.viivue-icomoon-select__icons {
-    list-style:none;
-    margin:-2px;
-    display:flex;
-    flex-wrap:wrap;
+ul.vii-icomoon__icons {
+    list-style:none; margin:-2px;
+    display:flex; flex-wrap:wrap;
 }
 
-ul.viivue-icomoon-select__icons li {
-    padding:2px;
-    margin:0;
-    width:12.5%;
-    box-sizing:border-box;
+ul.vii-icomoon__icons li {
+    padding:2px; margin:0; width:12.5%;
 }
 
-ul.viivue-icomoon-select__icons li a {
-    width:100%;
-    height:30px;
-    border-radius:4px;
-    transition:all .3s ease;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+ul.vii-icomoon__icons li a {
+    width:100%; height:30px;
+    border-radius:4px; transition:all .3s ease;
+    display:flex; align-items:center; justify-content:center;
 }
 
-ul.viivue-icomoon-select__icons li a svg {
-    width:18px;
-    height:18px;
-}
+ul.vii-icomoon__icons li a svg {width:18px; height:18px;}
 
-ul.viivue-icomoon-select__icons li a:hover {
-    background-color:#fff;
-}
+ul.vii-icomoon__icons li a:hover {background-color:#fff;}
 
-ul.viivue-icomoon-select__icons li a.active,
-ul.viivue-icomoon-select__icons li a:focus {
+ul.vii-icomoon__icons li a.active,
+ul.vii-icomoon__icons li a:focus {
     box-shadow:0 0 0 1px #6c75df;
     background-color:#fff;
 }
 
+
 /****************************
- * FW Icomoon Select - for VC Param
+ * Icomoon Select - VC Param
 ****************************/
-.vc_shortcode-param .viivue-icomoon-select__field-result {
-    height:45px;
-    background-color:#fff;
-}
-
-.vc_shortcode-param .viivue-icomoon-select__field-button button {
-    height:45px;
-}
-
-.vc_shortcode-param .viivue-icomoon-select__field-remove {
-    line-height:45px;
+.vii-icomoon.vc-element {
+    --vico-right:130px;
+    --vico-field-height:45px;
+    --vico-field-svg-size:25px;
 }
 
 /* icon list */
-.vc_shortcode-param ul.viivue-icomoon-select__icons li {
-    width:20%;
-}
-
-.vc_shortcode-param ul.viivue-icomoon-select__icons li a {
-    height:40px;
-}
-
-.vc_shortcode-param ul.viivue-icomoon-select__icons li a svg {
-    width:35px;
-    height:25px;
-}
+.vc_shortcode-param ul.vii-icomoon__icons li {width:20%;}
+.vc_shortcode-param ul.vii-icomoon__icons li a {height:40px;}
+.vc_shortcode-param ul.vii-icomoon__icons li a svg {width:35px; height:25px;}
 
 /* popup */
-.vc_shortcode-param .viivue-icomoon-select__popup {
-    position:relative;
-    top:auto;
-    bottom:auto;
-    left:auto;
-    width:100%;
-    max-width:300px;
-    max-height:250px;
+.vc_shortcode-param .vii-icomoon__popup {
+    position:relative; top:auto; bottom:auto; left:auto;
+    width:100%; max-width:300px; max-height:250px;
 }

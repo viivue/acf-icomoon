@@ -70,7 +70,8 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		 * HTML for ACF and VC
 		 */
 		function viivue_icomoon_select_html($icon_array, $value, $input_html, $vc_element = false): string{
-			$id = uniqid();
+			$id    = uniqid();
+			$class = $vc_element ? 'vc-element' : 'acf';
 			
 			// find active icon
 			$active_icon = array();
@@ -85,24 +86,24 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$active_icon_name = viivue_array_key_exists('name', $active_icon);
 			
 			// wrapper
-			$html = '<div class="viivue-icomoon-select popup-top" id="' . $id . '">';
+			$html = '<div class="vii-icomoon popup-top ' . $class . '" id="' . $id . '">';
 			
-			// input
-			$html .= '<div class="viivue-icomoon-select__input">' . $input_html . '</div>';
+			// hidden input
+			$html .= '<div class="vii-icomoon__hidden-input">' . $input_html . '</div>';
 			
-			// field
-			$html .= '<div class="viivue-icomoon-select__field">';
+			// custom field
+			$html .= '<div class="vii-icomoon__custom-field">';
 			
-			$html .= '<div class="viivue-icomoon-select__field-col left">';
-			$html .= '<div class="viivue-icomoon-select__field-result" data-icomoon="popup-trigger">';
+			$html .= '<div class="vii-icomoon__custom-field-col left">';
+			$html .= '<div class="vii-icomoon__custom-field-result" data-icomoon="popup-trigger">';
 			$html .= '<span class="icon-svg">' . $active_icon_svg . '</span>';
 			$html .= '<span class="icon-name">' . $active_icon_name . '</span>';
 			$html .= '</div>';
-			$html .= '<a class="viivue-icomoon-select__field-remove" data-icomoon="remove-value" href="#">⨉</a>';
+			$html .= '<a class="vii-icomoon__custom-field-remove" data-icomoon="remove-value" href="#">⨉</a>';
 			$html .= '</div>';
 			
-			$html .= '<div class="viivue-icomoon-select__field-col right">';
-			$html .= '<div class="viivue-icomoon-select__field-button">';
+			$html .= '<div class="vii-icomoon__custom-field-col right">';
+			$html .= '<div class="vii-icomoon__custom-field-button">';
 			$html .= '<button class="button" type="button" data-icomoon="popup-trigger">';
 			$html .= '<span class="select">Select icon</span>';
 			$html .= '<span class="cancel">Cancel</span>';
@@ -110,11 +111,10 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$html .= '</div>';
 			$html .= '</div>';
 			
-			$html .= '</div>'; // end field html
+			$html .= '</div>'; // end custom field
 			
 			// popup
 			$html .= $this->viivue_get_popup_html($icon_array, $value, $vc_element);
-			// end popup
 			
 			$html .= '</div>'; // end wrapper
 			
@@ -156,15 +156,15 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			}
 			
 			// HTML
-			$html .= '<div class="viivue-icomoon-select__popup">';
-			$html .= '<div class="viivue-icomoon-select__popup-inner">';
+			$html .= '<div class="vii-icomoon__popup">';
+			$html .= '<div class="vii-icomoon__popup-inner">';
 			
-			$html .= '<div class="viivue-icomoon-select__popup-head">';
-			$html .= '<span class="viivue-icomoon-select__count-text">' . $count_text . '</span>';
+			$html .= '<div class="vii-icomoon__popup-head">';
+			$html .= '<span class="vii-icomoon__count-text">' . $count_text . '</span>';
 			$html .= '</div>';
 			
-			$html .= '<div class="viivue-icomoon-select__popup-body">';
-			$html .= '<ul class="viivue-icomoon-select__icons">';
+			$html .= '<div class="vii-icomoon__popup-body">';
+			$html .= '<ul class="vii-icomoon__icons">';
 			$html .= $items;
 			$html .= '</ul>';
 			$html .= '</div>';
