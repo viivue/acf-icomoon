@@ -133,7 +133,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		 */
 		function viivue_get_popup_html($icons_array, $selected_value, $vc_element): string{
 			$html       = '';
-			$count_text = count($icons_array) . ' icons';
+			$count_text = '<span data-icomoon="count">' . count($icons_array) . '</span> icons';
 			
 			// icons HTML
 			$items = '';
@@ -160,6 +160,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$html .= '<div class="vii-icomoon__popup-inner">';
 			
 			$html .= '<div class="vii-icomoon__popup-head">';
+			$html .= '<div class="vii-icomoon__search"><input data-icomoon="search" type="search" placeholder="Search icon..."></div>';
 			$html .= '<span class="vii-icomoon__count-text">' . $count_text . '</span>';
 			$html .= '</div>';
 			

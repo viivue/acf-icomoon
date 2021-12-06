@@ -69,6 +69,9 @@
                 $field.removeClass("popup-left");
                 $field.addClass("popup-right");
             }
+
+            // focus to search field
+            $popup.find('[data-icomoon="search"]').focus();
         });
 
         // select icon
@@ -103,7 +106,56 @@
         });
     }
 
-    // init
+
+    /**
+     * Search icon
+     * @param $wrapper
+     * @param query
+     */
+    const search = ($wrapper, query) => {
+        const array = [];
+        const $icons = $wrapper.find('[data-icomoon-value]');
+        $icons.each(function(){
+            array.push({
+                title: $(this).attr('data-icomoon-value'),
+                parent: $(this).parent()
+            });
+        });
+
+        const results = array.filter(item => item.title.indexOf(query) !== -1);
+
+        // hide
+        $icons.parent().hide();
+
+        // show
+        for(const icon of results){
+            icon.parent.show();
+        }
+
+        // update result count
+        $wrapper.find('[data-icomoon="count"]').text(results.length);
+    }
+
+
+    /**
+     * Init search
+     */
+    const initSearch = () => {
+        // search on keyup
+        let debounce, debounceTime = 400;
+        $(document).on('keyup', '[data-icomoon="search"]', function(){
+            clearTimeout(debounce);
+            debounce = setTimeout(() => {
+                search($(this).closest('.vii-icomoon'), $(this).val());
+            }, debounceTime);
+        });
+    }
+
+
+    // init select
     acf.add_action('ready', viivue_icomoon_select);
+
+    // init search
+    initSearch();
 
 })(jQuery);
