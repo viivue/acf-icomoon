@@ -7,9 +7,8 @@ if(!defined('ABSPATH')){
 if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 	class ViiVue_ACF_Field_Icomoon extends acf_field{
 		/**
-		 * Setup the field type data
+		 * Set up the field type data
 		 */
-		
 		function __construct(){
 			$this->name     = 'viivue_acf_icomoon';
 			$this->label    = __('Icomoon', 'acf-icomoon');
@@ -22,9 +21,8 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		
 		
 		/**
-		 * Create extra settings
+		 * Create settings for this fields in ACF
 		 */
-		
 		function render_field_settings($field){
 			// Admin field: Selection.json
 			acf_render_field_setting($field, array(
@@ -34,14 +32,14 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 				'name'         => 'selection_json_path'
 			));
 			
-			// Admin field: Return value
+			// Admin field: Return value type
 			acf_render_field_setting($field, array(
 				'label'        => __('Return value', 'acf-icomoon'),
 				'instructions' => __('Specify the returned value on front end', 'acf-icomoon'),
 				'type'         => 'radio',
 				'name'         => 'display_type',
 				'choices'      => array(
-					'icon'       => 'Icon element',
+					'icon'       => 'Icon element (HTML)',
 					'icon_class' => 'Icon class',
 					'svg'        => 'SVG element'
 				)
@@ -49,67 +47,63 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		}
 		
 		
-		/*
-		*  Create the HTML interface
-		*/
-		
+		/**
+		 *  Render HTML interface for ACF
+		 */
 		function render_field($field){
-			$choices    = $this->viivue_get_icomoon_json(viivue_array_key_exists('selection_json_path', $field));
-			$value      = esc_attr(viivue_array_key_exists('value', $field)); // selected value
-			$name       = esc_attr(viivue_array_key_exists('name', $field));
+			// list of icons
+			$choices = $this->viivue_get_icomoon_json(viivue_array_key_exists('selection_json_path', $field));
+			
+			// selected value
+			$value = esc_attr(viivue_array_key_exists('value', $field));
+			$name  = esc_attr(viivue_array_key_exists('name', $field));
+			
+			// ACF input field display in backend interface
 			$input_html = '<input type="hidden" name="' . $name . '" value="' . $value . '"/>';
 			
+			// output HTML
 			echo $this->viivue_icomoon_select_html($choices, $value, $input_html);
 		}
 		
-		/**
-		 * Icomoon select
-		 */
 		
-		function viivue_icomoon_select_html($icon_array, $value, $input_html, $vc_element = false){
-			$count_text  = count($icon_array) . ' icons';
-			$id          = uniqid();
-			$active_icon = array();
+		/**
+		 * HTML for ACF and VC
+		 */
+		function viivue_icomoon_select_html($icon_array, $value, $input_html, $vc_element = false): string{
+			$id    = uniqid();
+			$class = $vc_element ? 'vc-element' : 'acf';
 			
-			// Icon array
-			$items = '';
+			// find active icon
+			$active_icon = array();
 			foreach($icon_array as $icon){
 				$return_value = $vc_element ? "icon_class" : "name";
-				$svg          = viivue_array_key_exists('icon_svg', $icon);
-				$name         = viivue_array_key_exists('name', $icon);
 				$is_selected  = $icon[$return_value] == $value;
-				$class        = '';
 				if($is_selected){
-					$class       = "active";
 					$active_icon = $icon;
 				}
-				$icomoon_value = viivue_array_key_exists($return_value, $icon);
-				
-				$items .= '<li><a data-icomoon="select" data-icomoon-value="' . $icomoon_value . '" href="#" class="' . $class . '" title="' . $name . '">' . $svg . '</a></li>';
 			}
-			
 			$active_icon_svg  = viivue_array_key_exists('icon_svg', $active_icon);
 			$active_icon_name = viivue_array_key_exists('name', $active_icon);
 			
-			// start field html
-			$html = '<div class="viivue-icomoon-select popup-top" id="' . $id . '">';
+			// wrapper
+			$html = '<div class="vii-icomoon popup-top ' . $class . '" id="' . $id . '">';
 			
-			// input
-			$html .= '<div class="viivue-icomoon-select__input">' . $input_html . '</div>';
+			// hidden input
+			$html .= '<div class="vii-icomoon__hidden-input">' . $input_html . '</div>';
 			
-			// field
-			$html .= '<div class="viivue-icomoon-select__field">';
+			// custom field
+			$html .= '<div class="vii-icomoon__custom-field">';
 			
-			$html .= '<div class="viivue-icomoon-select__field-col left">';
-			$html .= '<div class="viivue-icomoon-select__field-result" data-icomoon="popup-trigger">';
+			$html .= '<div class="vii-icomoon__custom-field-col left">';
+			$html .= '<div class="vii-icomoon__custom-field-result" data-icomoon="popup-trigger">';
 			$html .= '<span class="icon-svg">' . $active_icon_svg . '</span>';
 			$html .= '<span class="icon-name">' . $active_icon_name . '</span>';
 			$html .= '</div>';
-			$html .= '<a class="viivue-icomoon-select__field-remove" data-icomoon="remove-value" href="#">⨉</a>';
+			$html .= '<a class="vii-icomoon__custom-field-remove" data-icomoon="remove-value" href="#">⨉</a>';
 			$html .= '</div>';
 			
-			$html .= '<div class="viivue-icomoon-select__field-col right">';
-			$html .= '<div class="viivue-icomoon-select__field-button">';
+			$html .= '<div class="vii-icomoon__custom-field-col right">';
+			$html .= '<div class="vii-icomoon__custom-field-button">';
 			$html .= '<button class="button" type="button" data-icomoon="popup-trigger">';
 			$html .= '<span class="select">Select icon</span>';
 			$html .= '<span class="cancel">Cancel</span>';
@@ -117,25 +111,65 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$html .= '</div>';
 			$html .= '</div>';
 			
-			$html .= '</div>'; // end field html
+			$html .= '</div>'; // end custom field
 			
 			// popup
-			$html .= '<div class="viivue-icomoon-select__popup">';
-			$html .= '<div class="viivue-icomoon-select__popup-inner">';
+			$html .= $this->viivue_get_popup_html($icon_array, $value, $vc_element);
 			
-			$html .= '<div class="viivue-icomoon-select__popup-head">';
-			$html .= '<span class="viivue-icomoon-select__count-text">' . $count_text . '</span>';
+			$html .= '</div>'; // end wrapper
+			
+			return $html;
+		}
+		
+		
+		/**
+		 * Get popup HTML
+		 *
+		 * @param $icons_array
+		 * @param $selected_value
+		 * @param $vc_element
+		 *
+		 * @return string
+		 */
+		function viivue_get_popup_html($icons_array, $selected_value, $vc_element): string{
+			$html       = '';
+			$count_text = count($icons_array) . ' icons';
+			
+			// icons HTML
+			$items = '';
+			foreach($icons_array as $icon){
+				$return_value  = $vc_element ? "icon_class" : "name";
+				$svg           = viivue_array_key_exists('icon_svg', $icon);
+				$name          = viivue_array_key_exists('name', $icon);
+				$is_selected   = $icon[$return_value] == $selected_value;
+				$icomoon_value = viivue_array_key_exists($return_value, $icon);
+				
+				// attributes
+				$attr = 'data-icomoon-value="' . $icomoon_value . '"';
+				$attr .= 'class="' . ($is_selected ? 'active' : '') . '"';
+				$attr .= 'title="' . $name . '"';
+				
+				// HTML
+				$items .= '<li>';
+				$items .= '<a data-icomoon="select" href="#" ' . $attr . '>' . $svg . '</a>';
+				$items .= '</li>';
+			}
+			
+			// HTML
+			$html .= '<div class="vii-icomoon__popup">';
+			$html .= '<div class="vii-icomoon__popup-inner">';
+			
+			$html .= '<div class="vii-icomoon__popup-head">';
+			$html .= '<span class="vii-icomoon__count-text">' . $count_text . '</span>';
 			$html .= '</div>';
 			
-			$html .= '<div class="viivue-icomoon-select__popup-body">';
-			$html .= '<ul class="viivue-icomoon-select__icons">';
+			$html .= '<div class="vii-icomoon__popup-body">';
+			$html .= '<ul class="vii-icomoon__icons">';
 			$html .= $items;
 			$html .= '</ul>';
 			$html .= '</div>';
 			
 			$html .= '</div>';
-			$html .= '</div>'; // end popup
-			
 			$html .= '</div>';
 			
 			return $html;
@@ -143,10 +177,9 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		
 		
 		/**
-		 * Get icomoon array
+		 * Get array of icons from json
 		 */
-		
-		function viivue_get_icomoon_json($json_path = ''){
+		function viivue_get_icomoon_json($json_path = ''): array{
 			$icon_size  = 32;
 			$icon_array = array();
 			if(empty($json_path) || !file_exists($json_path)){
@@ -166,7 +199,12 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 							$icon_name  = viivue_array_key_exists('name', $icon_props);
 							
 							// get svg (Format the SVG path)
-							$icon_svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="' . $icon_size . '" height="' . $icon_size . '" viewBox="0 0 1024 1024">';
+							$attr = 'width="' . $icon_size . '"';
+							$attr .= 'height="' . $icon_size . '"';
+							$attr .= 'viewBox="0 0 1024 1024"';
+							$attr .= 'preserveAspectRatio="xMidYMid meet"';
+							
+							$icon_svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" ' . $attr . '>';
 							$icon_svg .= '<title>' . $icon_name . '</title>';
 							foreach($icon_paths as $path){
 								$icon_svg .= '<path fill="#444" d="' . $path . '"></path>';
@@ -186,20 +224,19 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			return $icon_array;
 		}
 		
-		/*
-		*  Add assets, inherit from acf_field class
-		*/
 		
+		/**
+		 *  Add assets, inherit from acf_field class
+		 */
 		function input_admin_enqueue_scripts(){
 			wp_enqueue_style('viivue-acf-field-icomoon', ACFICOMOON_ASSETS_URL . "css/acf-icomoon.css", array('acf-input'), ACFICOMOON_VERSION);
 			wp_enqueue_script('viivue-acf-field-icomoon', ACFICOMOON_ASSETS_URL . "js/acf-icomoon.js", array('acf-input'), ACFICOMOON_VERSION);
 		}
 		
 		
-		/*
-		*  This filter is applied to the $value after it is loaded from the db before it is returned to the template
-		*/
-		
+		/**
+		 *  This filter is applied to the $value after it is loaded from the db before it is returned to the template
+		 */
 		function format_value($value, $post_id, $field){
 			if(empty($value)){
 				return $value;
@@ -215,13 +252,17 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			
 			$value = viivue_array_key_exists($value, $choices);
 			
+			// return icon class
 			if($display_type == 'icon_class'){
 				return viivue_array_key_exists('icon_class', $value);
 			}
+			
+			// return svg
 			if($display_type == 'svg'){
 				return viivue_array_key_exists('icon_svg', $value);
 			}
 			
+			// return icon html
 			return '<i class="' . viivue_array_key_exists('icon_class', $value) . '"></i>';
 		}
 		

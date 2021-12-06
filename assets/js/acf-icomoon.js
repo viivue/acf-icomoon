@@ -8,9 +8,9 @@
 
         // update value for the given field
         function update($field, value = null){
-            const $input = $field.find('.viivue-icomoon-select__input input');
-            const $resultSvg = $field.find(".viivue-icomoon-select__field-result .icon-svg");
-            const $resultName = $field.find(".viivue-icomoon-select__field-result .icon-name");
+            const $input = $field.find('.vii-icomoon__hidden-input input');
+            const $resultSvg = $field.find(".vii-icomoon__custom-field-result .icon-svg");
+            const $resultName = $field.find(".vii-icomoon__custom-field-result .icon-name");
             value = value === null ? $input.val() : value;
 
             let svg = '';
@@ -35,14 +35,14 @@
         }
 
         // update on load
-        $('.viivue-icomoon-select').each(function(){
+        $('.vii-icomoon').each(function(){
             update($(this));
         });
 
         // show/hide popup
         $(document).on('click', '[data-icomoon="popup-trigger"]', function(e){
-            const $field = $(e.target).closest('.viivue-icomoon-select');
-            const $popup = $field.find('.viivue-icomoon-select__popup');
+            const $field = $(e.target).closest('.vii-icomoon');
+            const $popup = $field.find('.vii-icomoon__popup');
 
             e.preventDefault();
             $field.toggleClass("popup-open");
@@ -73,7 +73,7 @@
 
         // select icon
         $(document).on('click', '[data-icomoon="select"]', function(e){
-            const $field = $(e.target).closest('.viivue-icomoon-select');
+            const $field = $(e.target).closest('.vii-icomoon');
             const $this = $(e.target).closest('[data-icomoon="select"]');
 
             e.preventDefault();
@@ -85,7 +85,7 @@
 
         // remove value
         $(document).on('click', '[data-icomoon="remove-value"]', function(e){
-            const $field = $(e.target).closest('.viivue-icomoon-select');
+            const $field = $(e.target).closest('.vii-icomoon');
 
             e.preventDefault();
             if(dev) console.log('remove icon')
@@ -96,9 +96,9 @@
 
         // click outside
         $(document).click(function(e){
-            const $field = $(e.target).closest('.viivue-icomoon-select');
+            const $field = $(e.target).closest('.vii-icomoon');
             if(!$field.length){
-                $('.viivue-icomoon-select').removeClass("popup-open");
+                $('.vii-icomoon').removeClass("popup-open");
             }
         });
     }
