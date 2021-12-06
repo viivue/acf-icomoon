@@ -4,9 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
-### v3.4.0 - 2021-12-xx
+### v3.4.0 - 2021-12-06
 
-- Refactor HTML, CSS, JS
+- Changed: Refactor HTML, CSS, JS
+- New: Search icons inside popup
 
 ### v3.3 - 2021-09-11
 
