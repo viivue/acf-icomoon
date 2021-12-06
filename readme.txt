@@ -29,8 +29,8 @@ This ACF field type is compatible with:
 
 == Changelog ==
 
-= 3.3 =
-*Release Date - 11 September 2021*
+= 3.4.0 =
+*Release Date - 06 December 2021*
 
-- Fixed: Error when activate plugin without WPBakery Page Builder installed
-- Added: Notice when Advanced Custom Fields is not activated
+- Changed: Refactor HTML, CSS, JS
+- New: Search icons inside popup
