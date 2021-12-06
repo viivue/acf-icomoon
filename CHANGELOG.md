@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
+### v3.4.0 - 2021-12-xx
+
+- Refactor HTML, CSS, JS
+
 ### v3.3 - 2021-09-11
 
 - Fixed: Error when activate plugin without WPBakery Page Builder installed
