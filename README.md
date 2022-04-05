@@ -2,7 +2,7 @@
  
  <img width="100px" src="https://ps.w.org/acf-icomoon/assets/icon.svg" align="center" alt="Icomoon for Advanced Custom Fields" />
  
- <h1 align="center" style="border:none; padding:0;">IcoMoon for Advanced Custom Fields</h2>
+ <h1 align="center" style="border:none; padding:0;">IcoMoon for Advanced Custom Fields</h1>
  
  <p align="center">A new ACF field that allows to select icon from <a href="https://icomoon.io" target="_blank">IcoMoon</a> json.</p>
 
