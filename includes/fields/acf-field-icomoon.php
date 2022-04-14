@@ -86,7 +86,9 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$active_icon_name = viivue_array_key_exists('name', $active_icon);
 			
 			// wrapper
-			$html = '<div class="vii-icomoon popup-top ' . $class . '" id="' . $id . '">';
+			$html = '<div data-icomoon-app="' . $id . '" class="vii-icomoon popup-top ' . $class . '" id="' . $id . '">';
+			
+			$html .= "<div style='display:none' data-icomoon-icons='" . json_encode($icon_array) . "'></div>";
 			
 			// hidden input
 			$html .= '<div class="vii-icomoon__hidden-input">' . $input_html . '</div>';
@@ -114,7 +116,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$html .= '</div>'; // end custom field
 			
 			// popup
-			$html .= $this->viivue_get_popup_html($icon_array, $value, $vc_element);
+			$html .= '<vii-icomoon-popup :icons="icons"/>';
 			
 			$html .= '</div>'; // end wrapper
 			
@@ -212,10 +214,10 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 							}
 							$icon_svg .= '</svg>';
 							
-							$icon_array[$icon_name] = array(
+							$icon_array[] = array(
 								'name'       => $icon_name,
 								'icon_class' => $prefix . $icon_name,
-								'icon_svg'   => $icon_svg,
+								'svg'   => $icon_svg,
 							);
 						}
 					}
@@ -231,9 +233,19 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		 */
 		function input_admin_enqueue_scripts(){
 			wp_enqueue_style('viivue-acf-field-icomoon', ACFICOMOON_ASSETS_URL . "css/acf-icomoon.css", array('acf-input'), ACFICOMOON_VERSION);
-			
-			wp_enqueue_script('viivue-acf-field-icomoon-vue', ACFICOMOON_ASSETS_URL . "js/vue.global.min.js", false, '3.2.31');
 			wp_enqueue_script('viivue-acf-field-icomoon', ACFICOMOON_ASSETS_URL . "js/acf-icomoon.js", false, ACFICOMOON_VERSION);
+			
+			// vue
+			wp_register_script('viivue-acf-field-icomoon-helper', ACFICOMOON_ASSETS_URL . "js/helper.js", false, ACFICOMOON_VERSION);
+			wp_register_script('viivue-acf-field-icomoon-vue', ACFICOMOON_ASSETS_URL . "js/vue.global.min.js", false, '3.2.31');
+			wp_register_script('viivue-acf-field-icomoon-vue-dom', ACFICOMOON_ASSETS_URL . "js/class-acf-icomoon-dom.js", false, ACFICOMOON_VERSION);
+			wp_register_script('viivue-acf-field-icomoon-vue-app', ACFICOMOON_ASSETS_URL . "js/acf-icomoon-app.js", array(
+				'viivue-acf-field-icomoon-helper',
+				'viivue-acf-field-icomoon-vue',
+				'viivue-acf-field-icomoon-vue-dom'
+			), ACFICOMOON_VERSION);
+			
+			wp_enqueue_script('viivue-acf-field-icomoon-vue-app');
 		}
 		
 		
