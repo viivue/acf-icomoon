@@ -86,7 +86,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$active_icon_name = viivue_array_key_exists('name', $active_icon);
 			
 			// wrapper
-			$html = '<div data-icomoon-app="' . $id . '" class="vii-icomoon popup-top ' . $class . '" id="' . $id . '">';
+			$html = '<div data-icomoon-app class="vii-icomoon popup-top ' . $class . '" id="' . $id . '">';
 			
 			$html .= "<div style='display:none' data-icomoon-icons='" . json_encode($icon_array) . "'></div>";
 			
@@ -106,7 +106,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			
 			$html .= '<div class="vii-icomoon__custom-field-col right">';
 			$html .= '<div class="vii-icomoon__custom-field-button">';
-			$html .= '<button class="button" type="button" data-icomoon="popup-trigger">';
+			$html .= '<button class="button" type="button" data-icomoon-popup-trigger>';
 			$html .= '<span class="select">Select icon</span>';
 			$html .= '<span class="cancel">Cancel</span>';
 			$html .= '</button>';
@@ -116,7 +116,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$html .= '</div>'; // end custom field
 			
 			// popup
-			$html .= '<vii-icomoon-popup :icons="icons"/>';
+			$html .= '<vii-icomoon-popup :icons="icons" :id="id"/>';
 			
 			$html .= '</div>'; // end wrapper
 			
@@ -158,7 +158,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			}
 			
 			// HTML
-			$html .= '<div class="vii-icomoon__popup">';
+			$html .= '<div class="vii-icomoon__popup" data-icomoon-popup>';
 			$html .= '<div class="vii-icomoon__popup-inner">';
 			
 			$html .= '<div class="vii-icomoon__popup-head">';
@@ -217,7 +217,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 							$icon_array[] = array(
 								'name'       => $icon_name,
 								'icon_class' => $prefix . $icon_name,
-								'svg'   => $icon_svg,
+								'svg'        => $icon_svg,
 							);
 						}
 					}
@@ -232,8 +232,11 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		 *  Add assets, inherit from acf_field class
 		 */
 		function input_admin_enqueue_scripts(){
-			wp_enqueue_style('viivue-acf-field-icomoon', ACFICOMOON_ASSETS_URL . "css/acf-icomoon.css", array('acf-input'), ACFICOMOON_VERSION);
 			wp_enqueue_script('viivue-acf-field-icomoon', ACFICOMOON_ASSETS_URL . "js/acf-icomoon.js", false, ACFICOMOON_VERSION);
+			
+			// easy popup
+			wp_register_style('viivue-acf-field-icomoon-easy-popup', ACFICOMOON_ASSETS_URL . "css/easy-popup.min.css", false, '0.0.2');
+			wp_register_script('viivue-acf-field-icomoon-easy-popup', ACFICOMOON_ASSETS_URL . "js/easy-popup.min.js", false, '0.0.2');
 			
 			// vue
 			wp_register_script('viivue-acf-field-icomoon-helper', ACFICOMOON_ASSETS_URL . "js/helper.js", false, ACFICOMOON_VERSION);
@@ -241,11 +244,21 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			wp_register_script('viivue-acf-field-icomoon-vue-dom', ACFICOMOON_ASSETS_URL . "js/class-acf-icomoon-dom.js", false, ACFICOMOON_VERSION);
 			wp_register_script('viivue-acf-field-icomoon-vue-app', ACFICOMOON_ASSETS_URL . "js/acf-icomoon-app.js", array(
 				'viivue-acf-field-icomoon-helper',
+				'viivue-acf-field-icomoon-easy-popup',
 				'viivue-acf-field-icomoon-vue',
 				'viivue-acf-field-icomoon-vue-dom'
 			), ACFICOMOON_VERSION);
 			
 			wp_enqueue_script('viivue-acf-field-icomoon-vue-app');
+			
+			
+			// CSS
+			wp_register_style('viivue-acf-field-icomoon', ACFICOMOON_ASSETS_URL . "css/acf-icomoon.css", array(
+				'acf-input',
+				'viivue-acf-field-icomoon-easy-popup'
+			), ACFICOMOON_VERSION);
+			
+			wp_enqueue_style('viivue-acf-field-icomoon');
 		}
 		
 		
