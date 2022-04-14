@@ -231,7 +231,9 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		 */
 		function input_admin_enqueue_scripts(){
 			wp_enqueue_style('viivue-acf-field-icomoon', ACFICOMOON_ASSETS_URL . "css/acf-icomoon.css", array('acf-input'), ACFICOMOON_VERSION);
-			wp_enqueue_script('viivue-acf-field-icomoon', ACFICOMOON_ASSETS_URL . "js/acf-icomoon.js", array('acf-input'), ACFICOMOON_VERSION);
+			
+			wp_enqueue_script('viivue-acf-field-icomoon-vue', ACFICOMOON_ASSETS_URL . "js/vue.global.min.js", false, '3.2.31');
+			wp_enqueue_script('viivue-acf-field-icomoon', ACFICOMOON_ASSETS_URL . "js/acf-icomoon.js", false, ACFICOMOON_VERSION);
 		}
 		
 		
