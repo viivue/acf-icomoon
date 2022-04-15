@@ -27,7 +27,12 @@ class AcfIcomoonDom{
                 this.triggers = this.app.querySelectorAll('[data-icomoon-popup-trigger]');
                 this.triggers.forEach(el => {
                     el.addEventListener('click', () => {
+                        // open popup
                         this.popup.toggle();
+
+                        // set focus on search field
+                        const searchInput = document.querySelector(`[data-easy-popup-id="${id}"] input[data-icomoon-search]`);
+                        setTimeout(() => searchInput.focus(), 100)
                     });
                 });
 
