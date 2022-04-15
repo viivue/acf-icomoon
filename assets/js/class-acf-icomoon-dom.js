@@ -94,6 +94,10 @@ class AcfIcomoonDom{
                     isShow(name){
                         if(this.searchQuery === '') return true;
                         return name.includes(this.searchQuery);
+                    },
+                    searchLabel(name){
+                        if(this.searchQuery === '') return name;
+                        return name.replace(this.searchQuery, `<span class="label-search-highlight">${this.searchQuery}</span>`);
                     }
                 },
                 template: `
@@ -116,7 +120,7 @@ class AcfIcomoonDom{
                                         :class="{active: icon.name === selected.name}"
                                      >
                                         <i v-html="icon.svg"></i>
-                                        <label>{{icon.name}}</label>
+                                        <label v-html="searchLabel(icon.name)"></label>
                                     </button>
                                 </li>
                             </ul>

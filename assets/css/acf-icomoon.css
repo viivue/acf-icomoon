@@ -121,6 +121,7 @@ ul.vii-icomoon__icons li label {
     display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:100%;
     font-size:11px; color:#909090;
 }
+.label-search-highlight {background:#6c75df52; color:#000;}
 
 
 /****************************
