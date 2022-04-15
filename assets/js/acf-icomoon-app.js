@@ -20,11 +20,7 @@ acf.addAction('append_field/type=viivue_acf_icomoon', e => initIcomoonSelect(e))
  * @param panel
  */
 const jsComposerAfterElementRender = panel => {
-    //if(dev) console.log(`[ACF-Icomoon] VC element rendered.`);
-
-    panel.querySelectorAll(appSelector).forEach(app => {
-        new AcfIcomoonDom(app, 'vc-field');
-    });
+    panel.querySelectorAll(appSelector).forEach(app => new AcfIcomoonDom(app, 'vc-field'));
 }
 
 /**
@@ -32,10 +28,6 @@ const jsComposerAfterElementRender = panel => {
  * @param fields
  */
 function vcAfterIcomoonFieldAdd(fields){
-    //if(dev) console.log(`[ACF-Icomoon] VC param field added.`);
-
     const app = fields[0].querySelector(appSelector);
-    if(app){
-        new AcfIcomoonDom(app, 'vc-param-field');
-    }
+    if(app) new AcfIcomoonDom(app, 'vc-param-field')
 }
