@@ -84,8 +84,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			
 			// custom field
 			$html .= '<div class="vii-icomoon__custom-field empty">';
-			
-			$html .= '<div class="vii-icomoon__custom-field-col left">';
+			$html .= '<div class="vii-icomoon__custom-field-inner">';
 			
 			$html .= '<div class="vii-icomoon__custom-field-result" data-icomoon-popup-trigger>';
 			$html .= '<span class="icon-svg" v-if="selected.svg" v-html="selected.svg"></span>';
@@ -96,15 +95,6 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$html .= '<button class="vii-icomoon__custom-field-remove" v-if="selected.name" @click="clearSelection">⨉</button>';
 			
 			$html .= '</div>';
-			
-			$html .= '<div class="vii-icomoon__custom-field-col right">';
-			$html .= '<div class="vii-icomoon__custom-field-button">';
-			$html .= '<button class="button" type="button" data-icomoon-popup-trigger>';
-			$html .= '<span class="select">Select icon</span>';
-			$html .= '</button>';
-			$html .= '</div>';
-			$html .= '</div>';
-			
 			$html .= '</div>'; // end custom field
 			
 			// popup

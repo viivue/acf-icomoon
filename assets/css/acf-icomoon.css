@@ -3,8 +3,6 @@
 ****************************/
 .vii-icomoon {
     position:relative; z-index:9;
-    --vico-right:110px;
-    --vico-left:calc(100% - var(--vico-right));
     --vico-field-height:30px;
     --vico-field-svg-size:20px;
 }
@@ -14,11 +12,8 @@
 /****************************
  * Icomoon Select - Custom Field
 ****************************/
-.vii-icomoon__custom-field, .vii-icomoon__custom-field-result {
-    display:flex; align-items:center;
-}
-.vii-icomoon__custom-field-col.left {width:var(--vico-left); position:relative;}
-.vii-icomoon__custom-field-col.right {width:var(--vico-right); padding-left:5px;}
+.vii-icomoon__custom-field, .vii-icomoon__custom-field-result {display:flex; align-items:center;}
+.vii-icomoon__custom-field-inner {width:100%; position:relative;}
 
 /* result */
 .vii-icomoon__custom-field-result {
@@ -36,7 +31,7 @@
 .vii-icomoon:not(.empty) .vii-icomoon__custom-field-remove {display:block;}
 .vii-icomoon__custom-field-remove {
     position:absolute; top:50%; right:0;
-    transform:translateY(-50%); display:none;
+    transform:translateY(-50%);
     background-color:red; color:#fff !important; border:none;
     border-radius:0 4px 4px 0; height:100%; width:var(--vico-field-height);
     font-size:14px; font-weight:700;
