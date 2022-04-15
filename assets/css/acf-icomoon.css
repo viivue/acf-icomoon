@@ -123,6 +123,8 @@ ul.vii-icomoon__icons li label {
 }
 .label-search-highlight {background:#6c75df52; color:#000;}
 
+/* icon list empty */
+.vii-icomoon__icons-empty {display:block; text-align:center; padding:20px;}
 
 /****************************
  * Icomoon Select - VC Param

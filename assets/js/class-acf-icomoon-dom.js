@@ -98,6 +98,12 @@ class AcfIcomoonDom{
                     searchLabel(name){
                         if(this.searchQuery === '') return name;
                         return name.replace(this.searchQuery, `<span class="label-search-highlight">${this.searchQuery}</span>`);
+                    },
+                    isHasMatchedSearch(){
+                        if(this.searchQuery === '') return true;
+
+                        const matchedIcons = this.icons.filter(icon => icon.name.includes(this.searchQuery));
+                        return matchedIcons.length > 0;
                     }
                 },
                 template: `
@@ -112,7 +118,8 @@ class AcfIcomoonDom{
                         </div>
                         
                         <div class="vii-icomoon__popup-body">
-                            <ul class="vii-icomoon__icons">
+                        
+                            <ul class="vii-icomoon__icons" v-if="isHasMatchedSearch()">
                                 <li v-for="icon in icons" :class="{'search-hidden': !isShow(icon.name)}">
                                     <button 
                                         :data-icomoon-select="icon.name" 
@@ -124,6 +131,9 @@ class AcfIcomoonDom{
                                     </button>
                                 </li>
                             </ul>
+                            
+                            <strong class="vii-icomoon__icons-empty" v-if="!isHasMatchedSearch()">Oops! No icons matched your search.</strong>
+                            
                         </div>
                     
                     </div>
