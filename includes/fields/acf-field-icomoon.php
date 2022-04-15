@@ -107,61 +107,6 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		
 		
 		/**
-		 * Get popup HTML
-		 *
-		 * @param $icons_array
-		 * @param $selected_value
-		 * @param $vc_element
-		 *
-		 * @return string
-		 */
-		function viivue_get_popup_html($icons_array, $selected_value, $vc_element): string{
-			$html       = '';
-			$count_text = '<span data-icomoon="count">' . count($icons_array) . '</span> icons';
-			
-			// icons HTML
-			$items = '';
-			foreach($icons_array as $icon){
-				$return_value  = $vc_element ? "icon_class" : "name";
-				$svg           = viivue_array_key_exists('icon_svg', $icon);
-				$name          = viivue_array_key_exists('name', $icon);
-				$is_selected   = $icon[$return_value] == $selected_value;
-				$icomoon_value = viivue_array_key_exists($return_value, $icon);
-				
-				// attributes
-				$attr = 'data-icomoon-value="' . $icomoon_value . '"';
-				$attr .= 'class="' . ($is_selected ? 'active' : '') . '"';
-				$attr .= 'title="' . $name . '"';
-				
-				// HTML
-				$items .= '<li>';
-				$items .= '<a data-icomoon="select" href="#" ' . $attr . '>' . $svg . '</a>';
-				$items .= '</li>';
-			}
-			
-			// HTML
-			$html .= '<div class="vii-icomoon__popup" data-icomoon-popup>';
-			$html .= '<div class="vii-icomoon__popup-inner">';
-			
-			$html .= '<div class="vii-icomoon__popup-head">';
-			$html .= '<div class="vii-icomoon__search"><input data-icomoon="search" type="search" placeholder="Search icon..."></div>';
-			$html .= '<span class="vii-icomoon__count-text">' . $count_text . '</span>';
-			$html .= '</div>';
-			
-			$html .= '<div class="vii-icomoon__popup-body">';
-			$html .= '<ul class="vii-icomoon__icons">';
-			$html .= $items;
-			$html .= '</ul>';
-			$html .= '</div>';
-			
-			$html .= '</div>';
-			$html .= '</div>';
-			
-			return $html;
-		}
-		
-		
-		/**
 		 * Get array of icons from json
 		 */
 		function viivue_get_icomoon_json($json_path = ''): array{
