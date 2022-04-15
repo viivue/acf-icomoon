@@ -59,6 +59,10 @@ class AcfIcomoonDom{
                     _this.app.setAttribute('data-icomoon-selected', name);
 
                     EasyPopup.get(this.id).close();
+                },
+                clearSelection(){
+                    this.selected = {};
+                    _this.app.setAttribute('data-icomoon-selected', '');
                 }
             },
             created(){

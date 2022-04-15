@@ -93,7 +93,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$html .= '<span class="icon-name empty" v-if="!selected.name">Click to select icon</span>';
 			$html .= '</div>';
 			
-			$html .= '<a class="vii-icomoon__custom-field-remove" data-icomoon="remove-value" href="#">⨉</a>';
+			$html .= '<button class="vii-icomoon__custom-field-remove" v-if="selected.name" @click="clearSelection">⨉</button>';
 			
 			$html .= '</div>';
 			

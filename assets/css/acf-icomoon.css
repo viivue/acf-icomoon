@@ -23,25 +23,25 @@
 /* result */
 .vii-icomoon__custom-field-result {
     justify-content:flex-start; padding-left:10px;
-    border-radius:4px; border:1px solid #7e8993; height:var(--vico-field-height); line-height:1;
+    border-radius:4px; box-shadow:0 0 0 1px #7e8993;
+    height:var(--vico-field-height); line-height:1;
     transition:all .3s ease; cursor:pointer;
     background-color:#fff;
 }
 .vii-icomoon__custom-field-result .icon-svg svg {width:var(--vico-field-svg-size); height:var(--vico-field-svg-size); display:block;}
 .vii-icomoon__custom-field-result .icon-name {padding-left:10px;}
-.vii-icomoon__custom-field-result:hover {box-shadow:0 0 0 1px #6c75df;}
+.vii-icomoon__custom-field-result:hover {box-shadow:0 0 0 2px #6c75df;}
 
 /* button remove */
 .vii-icomoon:not(.empty) .vii-icomoon__custom-field-remove {display:block;}
 .vii-icomoon__custom-field-remove {
     position:absolute; top:50%; right:0;
     transform:translateY(-50%); display:none;
-    background-color:red; color:#fff !important;
+    background-color:red; color:#fff !important; border:none;
     border-radius:0 4px 4px 0; height:100%; width:var(--vico-field-height);
-    line-height:var(--vico-field-height); text-align:center; text-decoration:none;
     font-size:14px; font-weight:700;
     transition:all .3s ease;
-    cursor:pointer;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
 }
 .vii-icomoon__custom-field-remove:not(:hover) {background-color:transparent; color:red !important;}
 
@@ -136,7 +136,7 @@ ul.vii-icomoon__icons li label {
 ****************************/
 .vii-icomoon.vc-element {
     --vico-right:130px;
-    --vico-field-height:45px;
+    --vico-field-height:44px;
     --vico-field-svg-size:25px;
 }
 
