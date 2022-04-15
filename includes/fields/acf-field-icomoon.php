@@ -232,7 +232,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		 *  Add assets, inherit from acf_field class
 		 */
 		function input_admin_enqueue_scripts(){
-			wp_enqueue_script('viivue-acf-field-icomoon', ACFICOMOON_ASSETS_URL . "js/acf-icomoon.js", false, ACFICOMOON_VERSION);
+			//wp_enqueue_script('viivue-acf-field-icomoon', ACFICOMOON_ASSETS_URL . "js/acf-icomoon.js", false, ACFICOMOON_VERSION);
 			
 			// easy popup
 			wp_register_style('viivue-acf-field-icomoon-easy-popup', ACFICOMOON_ASSETS_URL . "css/easy-popup.min.css", false, '0.0.2');

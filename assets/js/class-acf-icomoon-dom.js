@@ -1,6 +1,7 @@
 class AcfIcomoonDom{
-    constructor(app){
+    constructor(app, type = 'acf'){
         this.app = app;
+        this.type = type;
         this.id = uniqueId('icomoon-');
         this.app.setAttribute('data-icomoon-app', this.id);
 
@@ -21,11 +22,11 @@ class AcfIcomoonDom{
             this.triggers = this.app.querySelectorAll('[data-icomoon-popup-trigger]');
             this.triggers.forEach(el => {
                 el.addEventListener('click', () => {
-                   this.popup.toggle();
+                    this.popup.toggle();
                 });
             });
 
-            console.log(`[ACF-Icomoon] Vue app created => ${id}`);
+            if(dev) console.log(`[ACF-Icomoon] (${this.type}) Vue app created => ${id}`);
         });
     }
 
