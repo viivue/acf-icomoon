@@ -163,3 +163,6 @@ ul.vii-icomoon__icons li label {
 @keyframes spinner {
     to {transform:rotate(360deg);}
 }
+
+/* hide duplicated button */
+[data-type="viivue_acf_icomoon"] + td .acf-icon.-duplicate {display:none!important;}
