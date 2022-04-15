@@ -54,7 +54,7 @@
 /****************************
  * Icomoon Select - Popup
 ****************************/
-.vii-icomoon.popup-open {z-index:9000;}
+body.wp-admin .easy-popup-master {z-index:9999999;}
 
 /* custom scrollbar */
 .vii-icomoon *::-webkit-scrollbar {width:3px;}
@@ -126,7 +126,7 @@ ul.vii-icomoon__icons li button.active {
 }
 
 ul.vii-icomoon__icons li label {
-    display:block; white-space:nowrap; overflow: hidden; text-overflow: ellipsis; width:100%;
+    display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:100%;
     font-size:11px; color:#909090;
 }
 
