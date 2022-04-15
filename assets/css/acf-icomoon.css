@@ -81,7 +81,7 @@ body.wp-admin .easy-popup-master {z-index:9999999;}
 
 /* popup head search */
 .vii-icomoon__search {width:100%;}
-.vii-icomoon__search input[type=search] {padding:4px 70px 4px 8px; min-height:30px; width:100%; border:none;}
+.vii-icomoon__search input[type=search] {padding:4px 8px; min-height:30px; width:100%; border:none;}
 .vii-icomoon__search input[type=search]:focus {
     box-shadow:0 0 0 2px #6c75df;
 }
@@ -90,7 +90,7 @@ body.wp-admin .easy-popup-master {z-index:9999999;}
 .vii-icomoon__count-text {white-space:nowrap; display:none;}
 
 /* body */
-.vii-icomoon__popup-body {max-height:400px; min-height:200px; overflow:auto; padding:10px;}
+.vii-icomoon__popup-body {max-height:400px; min-height:400px; overflow:auto; padding:10px;}
 
 /* close button */
 .vii-icomoon-easy-popup .easy-popup-close-button {height:60px; cursor:pointer;}
@@ -101,10 +101,8 @@ ul.vii-icomoon__icons {
     display:flex; flex-wrap:wrap; justify-content:center;
 }
 
-ul.vii-icomoon__icons li {
-    margin:0; width:84px; aspect-ratio:1/1;
-}
-ul.vii-icomoon__icons li.active button {}
+ul.vii-icomoon__icons li.search-hidden {display:none;}
+ul.vii-icomoon__icons li {margin:0; width:84px; aspect-ratio:1/1;}
 ul.vii-icomoon__icons li button {
     width:100%; aspect-ratio:1/1; padding:5px; cursor:pointer;
     border-radius:4px; transition:all .3s ease;

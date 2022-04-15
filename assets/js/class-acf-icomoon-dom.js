@@ -85,18 +85,31 @@ class AcfIcomoonDom{
                         required: false
                     }
                 },
+                data(){
+                    return {
+                        searchQuery: ''
+                    }
+                },
+                methods: {
+                    isShow(name){
+                        if(this.searchQuery === '') return true;
+                        return name.includes(this.searchQuery);
+                    }
+                },
                 template: `
                 <div class="vii-icomoon__popup" :data-icomoon-popup="id">
                     <div class="vii-icomoon__popup-inner">
                     
                         <div class="vii-icomoon__popup-head">
-                            <div class="vii-icomoon__search"><input data-icomoon="search" type="search" placeholder="Search icon..."></div>
+                            <div class="vii-icomoon__search">
+                                <input data-icomoon-search v-model="searchQuery" type="search" placeholder="Search icon...">
+                            </div>
                             <span class="vii-icomoon__count-text">count text</span>
                         </div>
                         
                         <div class="vii-icomoon__popup-body">
                             <ul class="vii-icomoon__icons">
-                                <li v-for="icon in icons">
+                                <li v-for="icon in icons" :class="{'search-hidden': !isShow(icon.name)}">
                                     <button 
                                         :data-icomoon-select="icon.name" 
                                         @click="$emit('selectIcon', icon.name)"
