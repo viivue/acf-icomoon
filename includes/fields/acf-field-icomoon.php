@@ -98,7 +98,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$html .= '</div>'; // end custom field
 			
 			// popup
-			$html .= '<vii-icomoon-popup :icons="icons" :id="id" @select-icon="selectIcon"/>';
+			$html .= '<vii-icomoon-popup :icons="icons" :id="id" :selected="selected" @select-icon="selectIcon"/>';
 			
 			$html .= '</div>'; // end wrapper
 			

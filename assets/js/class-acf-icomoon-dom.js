@@ -79,6 +79,10 @@ class AcfIcomoonDom{
                     icons: {
                         type: Array,
                         required: true
+                    },
+                    selected: {
+                        type: Object,
+                        required: false
                     }
                 },
                 template: `
@@ -93,7 +97,11 @@ class AcfIcomoonDom{
                         <div class="vii-icomoon__popup-body">
                             <ul class="vii-icomoon__icons">
                                 <li v-for="icon in icons">
-                                    <button :data-icomoon-select="icon.name" @click="$emit('selectIcon', icon.name)">
+                                    <button 
+                                        :data-icomoon-select="icon.name" 
+                                        @click="$emit('selectIcon', icon.name)"
+                                        :class="{active: icon.name === selected.name}"
+                                     >
                                         <i v-html="icon.svg"></i>
                                         <label>{{icon.name}}</label>
                                     </button>

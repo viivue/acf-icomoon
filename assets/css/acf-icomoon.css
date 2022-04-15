@@ -68,7 +68,7 @@ body.wp-admin .easy-popup-master {z-index:9999999;}
     background-color:#fff; box-shadow:0 0 10px 0 rgba(0, 0, 0, .15);
 }
 .vii-icomoon__popup * {box-sizing:border-box;}
-.vii-icomoon__popup-inner {position:relative; padding-top:59px;}
+.vii-icomoon__popup-inner {position:relative; padding-top:57px;}
 
 /* popup head */
 .vii-icomoon__popup-head {
@@ -93,7 +93,7 @@ body.wp-admin .easy-popup-master {z-index:9999999;}
 .vii-icomoon__popup-body {max-height:400px; min-height:200px; overflow:auto; padding:10px;}
 
 /* close button */
-.vii-icomoon-easy-popup .easy-popup-close-button {height:60px;}
+.vii-icomoon-easy-popup .easy-popup-close-button {height:60px; cursor:pointer;}
 
 /* icon list */
 ul.vii-icomoon__icons {
@@ -104,7 +104,7 @@ ul.vii-icomoon__icons {
 ul.vii-icomoon__icons li {
     margin:0; width:84px; aspect-ratio:1/1;
 }
-
+ul.vii-icomoon__icons li.active button {}
 ul.vii-icomoon__icons li button {
     width:100%; aspect-ratio:1/1; padding:5px; cursor:pointer;
     border-radius:4px; transition:all .3s ease;
@@ -115,10 +115,9 @@ ul.vii-icomoon__icons li button {
 ul.vii-icomoon__icons li button i {display:block; margin-bottom:5px; height:25px;}
 ul.vii-icomoon__icons li button i svg {width:100%; height:100%;}
 
-ul.vii-icomoon__icons li button:hover,
-ul.vii-icomoon__icons li button.active {
-    box-shadow:0 0 0 2px #6c75df;
-}
+ul.vii-icomoon__icons li button.active {box-shadow:inset 0 0 0 2px #6c75df;}
+ul.vii-icomoon__icons li button.active path {fill:#6c75df;}
+ul.vii-icomoon__icons li button:hover {box-shadow:0 0 0 2px #6c75df;}
 
 ul.vii-icomoon__icons li label {
     display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:100%;
