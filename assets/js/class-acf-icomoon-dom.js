@@ -10,35 +10,60 @@ class AcfIcomoonDom{
         this.icons = JSON.parse(iconsEl.getAttribute('data-icomoon-icons'));
         iconsEl.remove();
 
+        // input
+        this.input = this.app.querySelector('input[data-icomoon-input]');
+
         // create app
-        this.createApp(this.id, [...this.icons], id => {
-            // init popup
-            EasyPopup.init(`[data-icomoon-popup="${id}"]`, {
-                id: id,
-                outerClass: 'vii-icomoon-easy-popup',
-            });
-
-            this.popup = EasyPopup.get(id);
-            this.triggers = this.app.querySelectorAll('[data-icomoon-popup-trigger]');
-            this.triggers.forEach(el => {
-                el.addEventListener('click', () => {
-                    this.popup.toggle();
+        this.createApp({
+            _this: this,
+            callback: ({id, selected}) => {
+                // init popup
+                EasyPopup.init(`[data-icomoon-popup="${id}"]`, {
+                    id: id,
+                    outerClass: 'vii-icomoon-easy-popup',
                 });
-            });
 
-            if(dev) console.log(`[ACF-Icomoon] (${this.type}) Vue app created => ${id}`);
+                this.popup = EasyPopup.get(id);
+                this.triggers = this.app.querySelectorAll('[data-icomoon-popup-trigger]');
+                this.triggers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        this.popup.toggle();
+                    });
+                });
+
+                this.app.classList.remove('unmounted');
+
+                if(dev) console.log(`[ACF-Icomoon] (${this.type}) Vue app created => ${id}`, selected);
+            }
         });
     }
 
-    createApp(id, icons, callback){
+    getIconObjectByName(name){
+        const iconObject = this.icons.filter(i => i.name === name)[0];
+        return typeof iconObject !== 'undefined' ? iconObject : {};
+    }
+
+    createApp({_this, callback}){
         Vue.createApp({
             data(){
-                return {id, icons}
+                return {
+                    id: _this.id,
+                    icons: [..._this.icons],
+                    selected: _this.getIconObjectByName(_this.app.getAttribute('data-icomoon-selected')),
+                    isMounted: true,
+                }
             },
-            methods: {},
+            methods: {
+                selectIcon(name){
+                    this.selected = _this.getIconObjectByName(name);
+                    _this.app.setAttribute('data-icomoon-selected', name);
+
+                    EasyPopup.get(this.id).close();
+                }
+            },
             created(){
                 setTimeout(() => {
-                    callback(this.id);
+                    callback({id: this.id, selected: this.selected});
                 }, 10);
             }
         }).component('vii-icomoon-popup', {
@@ -57,33 +82,25 @@ class AcfIcomoonDom{
                     <div class="vii-icomoon__popup-inner">
                     
                         <div class="vii-icomoon__popup-head">
-                        <div class="vii-icomoon__search"><input data-icomoon="search" type="search" placeholder="Search icon..."></div>
-                        <span class="vii-icomoon__count-text">count text</span>
+                            <div class="vii-icomoon__search"><input data-icomoon="search" type="search" placeholder="Search icon..."></div>
+                            <span class="vii-icomoon__count-text">count text</span>
                         </div>
                         
                         <div class="vii-icomoon__popup-body">
-                        <ul class="vii-icomoon__icons">
-                            <vii-icomoon-item v-for="icon in icons" :icon="icon" />
-                        </ul>
+                            <ul class="vii-icomoon__icons">
+                                <li v-for="icon in icons">
+                                    <button :data-icomoon-select="icon.name" @click="$emit('selectIcon', icon.name)">
+                                        <i v-html="icon.svg"></i>
+                                        <label>{{icon.name}}</label>
+                                    </button>
+                                </li>
+                            </ul>
                         </div>
                     
                     </div>
                 </div>
                 `
             }
-        ).component('vii-icomoon-item', {
-            props: {
-                icon: {
-                    type: Object,
-                    required: true
-                },
-            },
-            template: `
-            <li><button>
-            <i v-html="icon.svg"></i>
-            <label>{{icon.name}}</label>
-            </button></li>
-            `
-        }).mount(this.app);
+        ).mount(this.app);
     }
 }

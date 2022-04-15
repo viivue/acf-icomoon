@@ -145,3 +145,26 @@ ul.vii-icomoon__icons li label {
     position:relative; top:auto; bottom:auto; left:auto;
     width:100%; max-width:300px; max-height:250px;
 }
+
+
+/* Loading */
+.unmounted {position:relative; border-radius:5px; overflow:hidden;}
+.unmounted:before {
+    content:""; position:absolute; top:0; left:0; right:0; bottom:0; z-index:999;
+    background-color:rgba(255, 255, 255, 0.5);
+    backdrop-filter:blur(5px);
+}
+.unmounted:after {
+    --loading-size:20px;
+    content:""; position:absolute; top:50%; left:50%; z-index:9999;
+    width:var(--loading-size); height:var(--loading-size);
+    margin:calc(-0.5 * var(--loading-size)) 0 0 calc(-0.5 * var(--loading-size));
+    border-radius:50%; border:1px dashed transparent;
+    border-bottom-color:#6c75df;
+    border-right-color:#6c75df;
+    animation:spinner .6s linear infinite;
+    box-sizing:border-box;
+}
+@keyframes spinner {
+    to {transform:rotate(360deg);}
+}
