@@ -196,24 +196,26 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$choices      = $this->viivue_get_icomoon_json($path);
 			$display_type = viivue_array_key_exists('display_type', $field);
 			
-			if(!array_key_exists($value, $choices)){
-				return '';
+			$icon = array();
+			foreach($choices as $object){
+				if(viivue_array_key_exists('name', $object) === $value){
+					$icon = $object;
+					break;
+				}
 			}
-			
-			$value = viivue_array_key_exists($value, $choices);
 			
 			// return icon class
 			if($display_type == 'icon_class'){
-				return viivue_array_key_exists('icon_class', $value);
+				return viivue_array_key_exists('icon_class', $icon);
 			}
 			
 			// return svg
 			if($display_type == 'svg'){
-				return viivue_array_key_exists('icon_svg', $value);
+				return viivue_array_key_exists('svg', $icon);
 			}
 			
 			// return icon html
-			return '<i class="' . viivue_array_key_exists('icon_class', $value) . '"></i>';
+			return '<i class="' . viivue_array_key_exists('icon_class', $icon) . '"></i>';
 		}
 		
 	}
