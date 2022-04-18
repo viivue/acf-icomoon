@@ -41,17 +41,24 @@ function vcAfterIcomoonFieldAdd(fields){
  */
 document.addEventListener('click', function(e){
     if(e.target.classList.contains('-duplicate')){
-        const row = e.target.closest('.acf-row');
-        const app = row.querySelector('[data-icomoon-app]');
+        const oldRow = e.target.closest('.acf-row');
+        const app = oldRow.querySelector('[data-icomoon-app]');
+        const oldRowId = oldRow.getAttribute('data-id');
         if(app){
-            const newRow = row.nextSibling;
+            const newRow = oldRow.nextSibling;
 
             // load app html
             newRow.querySelector('[data-icomoon-app]').parentElement.innerHTML = app.getAttribute('data-icomoon-init-html');
 
             // clone value
+            const newId = newRow.getAttribute('data-id');
+            const newVal = app.getAttribute('data-icomoon-selected');
             const newRowApp = newRow.querySelector('[data-icomoon-app]');
-            newRowApp.setAttribute('data-icomoon-selected', app.getAttribute('data-icomoon-selected'));
+            const newInput = newRowApp.querySelector('input[data-icomoon-input]');
+            const newInputName = newInput.getAttribute('name').replace(oldRowId, newId);
+            newRowApp.setAttribute('data-icomoon-selected', newVal);
+            newInput.setAttribute('name', newInputName);
+            newInput.value = newVal;
 
             // init app
             newRowApp.setAttribute('data-icomoon-init-html', newRowApp.outerHTML);
