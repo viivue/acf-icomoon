@@ -4,6 +4,7 @@ class AcfIcomoonDom{
         this.type = type;
         this.id = uniqueId('icomoon-');
         this.app.setAttribute('data-icomoon-app', this.id);
+        this.appType = this.app.classList.contains('acf') ? 'acf' : 'vc-element';
 
         // get icons from json
         const iconsEl = this.app.querySelector('[data-icomoon-icons]');
@@ -44,7 +45,7 @@ class AcfIcomoonDom{
     }
 
     getIconObjectByName(name){
-        const iconObject = this.icons.filter(i => i.name === name)[0];
+        const iconObject = this.icons.filter(i => (this.appType === 'acf' ? i.name : i.icon_class) === name)[0];
         return typeof iconObject !== 'undefined' ? iconObject : {};
     }
 
