@@ -44,8 +44,13 @@ class AcfIcomoonDom{
         });
     }
 
+    // get value based on type of app (ACF or VC Element)
+    getSavedValue(iconObj){
+        return this.appType === 'acf' ? iconObj.name : iconObj.icon_class;
+    }
+
     getIconObjectByName(name){
-        const iconObject = this.icons.filter(i => (this.appType === 'acf' ? i.name : i.icon_class) === name)[0];
+        const iconObject = this.icons.filter(i => this.getSavedValue(i) === name)[0];
         return typeof iconObject !== 'undefined' ? iconObject : {};
     }
 
