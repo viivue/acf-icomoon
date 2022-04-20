@@ -67,10 +67,3 @@ function viivue_icomoon_admin_notices(){
 		echo '<div class="notice notice-warning"><p>' . $notice . '</p></div>';
 	}
 }
-
-/**
- *  After VC Element Render
- */
-add_action('vc_edit_form_fields_after_render', function(){
-	echo '<script>jsComposerAfterElementRender(document.querySelector(".vc_ui-panel.vc_active"));</script>';
-}, 9);

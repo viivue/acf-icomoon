@@ -14,5 +14,8 @@ function viivue_js_composer_icomoon($settings, $value){
 	$value      = esc_attr($value);
 	$input_html = '<input name="' . esc_attr($param_name) . '" class="hidden wpb_vc_param_value wpb-textinput ' . esc_attr($param_name) . ' ' . esc_attr($type) . '_field" type="text" v-model="selected.icon_class" data-icomoon-input/>';
 	
-	return $acf_icomoon->viivue_icomoon_select_html($icon_array, $value, $input_html, true);
+	$html = $acf_icomoon->viivue_icomoon_select_html($icon_array, $value, $input_html, true);
+	$html .= '<script>jsComposerAfterElementRender(document.querySelector(".vc_ui-panel.vc_active"));</script>';
+	
+	return $html;
 }
