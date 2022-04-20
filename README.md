@@ -7,7 +7,9 @@
  <p align="center">A new ACF field that allows to select icon from <a href="https://icomoon.io" target="_blank">IcoMoon</a> json.</p>
 
  <p align="center">
-   <a href="https://wordpress.org/plugins/acf-icomoon/">
+   <a href="https://github.com/viivue/acf-icomoon/releases/latest">
+   <img src="https://badgen.net/github/release/viivue/acf-icomoon/?cache=600">
+   </a><a href="https://wordpress.org/plugins/acf-icomoon/">
    <img src="https://img.shields.io/badge/-WordPress-0273A9">
    </a>
     <a href="https://icomoon.io">
@@ -17,7 +19,7 @@
    <img src="https://img.shields.io/badge/-Advanced Custom Fields-347C39">
    </a>
  </p>
- 
+
 </div>
 
 
@@ -25,11 +27,10 @@
 
 ### Download
 
-Search this plugin from your _CMS Admin > Plugins_ page 
+Search for "**Support For Icomoon with Advanced Custom Fields**" from your _CMS Admin > Plugins_ page
 
-or 
-
-Download the zip file from [WordPress > Plugin](https://wordpress.org/plugins/acf-icomoon/)
+or download the zip file from [WordPress > Plugin](https://wordpress.org/plugins/acf-icomoon/) or
+from [releases](https://github.com/viivue/acf-icomoon/releases)
 
 ### Create field
 

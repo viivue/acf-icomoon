@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
-### v3.4.0 - 2021-12-06
+### v4.0.0 - 2022-04-20
+
+- New: Mass upgrade with VueJS and a brand-new layout.
+
+### v4.0.0 - 2021-12-06
 
 - Changed: Refactor HTML, CSS, JS
 - New: Search icons inside popup
