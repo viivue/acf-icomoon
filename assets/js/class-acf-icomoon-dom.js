@@ -59,11 +59,21 @@ class AcfIcomoonDom{
                 }
             },
             methods: {
-                selectIcon(name){
-                    this.selected = _this.getIconObject(name);
-                    _this.app.setAttribute('data-icomoon-selected', name);
+                selectIcon(val){
+                    const lastSelected = this.selected;
+                    this.selected = _this.getIconObject(val);
+                    _this.app.setAttribute('data-icomoon-selected', val);
 
                     EasyPopup.get(this.id).close();
+
+                    // param group > update group label
+                    if(_this.type === 'vc-field' || _this.type === 'vc-param-field'){
+                        const groupItem = _this.app.closest('.vc_param');
+                        if(groupItem){
+                            const label = groupItem.querySelector('.vc_param-group-admin-labels');
+                            if(label) label.innerHTML = label.innerHTML.replace(lastSelected.icon_class, val);
+                        }
+                    }
                 },
                 clearSelection(){
                     this.selected = {};
