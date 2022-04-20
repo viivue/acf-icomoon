@@ -72,12 +72,19 @@ class AcfIcomoonDom{
                         if(groupItem){
                             const label = groupItem.querySelector('.vc_param-group-admin-labels');
                             if(label){
+                                const labelTitle = groupItem.querySelector('[data-param_type="icomoon_class"] .wpb_element_label').textContent;
+                                const oldLabel = `<label>${labelTitle}</label>: ${lastSelected.icon_class}`;
+
                                 if(label.innerHTML){
-                                    // replace
-                                    label.innerHTML = label.innerHTML.replace(lastSelected.icon_class, val);
+                                    if(label.innerHTML.includes(oldLabel)){
+                                        // replace
+                                        label.innerHTML = label.innerHTML.replace(lastSelected.icon_class, val);
+                                    }else{
+                                        // prepend
+                                        label.innerHTML = `<label>${labelTitle}</label>: ${val}, ` + label.innerHTML;
+                                    }
                                 }else{
                                     // create
-                                    const labelTitle = groupItem.querySelector('[data-param_type="icomoon_class"] .wpb_element_label').textContent;
                                     label.innerHTML = `<label>${labelTitle}</label>: ${val}`;
                                     label.classList.remove('vc_hidden-label');
                                 }
@@ -86,8 +93,26 @@ class AcfIcomoonDom{
                     }
                 },
                 clearSelection(){
+                    const lastSelected = this.selected;
                     this.selected = {};
                     _this.app.setAttribute('data-icomoon-selected', '');
+
+                    // param group > remove group label
+                    if(_this.type === 'vc-field' || _this.type === 'vc-param-field'){
+                        const groupItem = _this.app.closest('.vc_param');
+                        if(groupItem){
+                            const label = groupItem.querySelector('.vc_param-group-admin-labels');
+                            if(label && label.innerHTML.length){
+                                const labelTitle = groupItem.querySelector('[data-param_type="icomoon_class"] .wpb_element_label').textContent;
+                                const oldLabel = `<label>${labelTitle}</label>: ${lastSelected.icon_class}`;
+
+                                // replace
+                                label.innerHTML = label.innerHTML.replace(oldLabel, '');
+
+                                if(!label.innerHTML.length) label.classList.add('vc_hidden-label');
+                            }
+                        }
+                    }
                 }
             },
             created(){
