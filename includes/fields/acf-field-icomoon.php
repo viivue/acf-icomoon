@@ -16,6 +16,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$this->defaults = array(
 				'selection_json_path' => ACFICOMOON_STYLESHEET_DIR . '/assets/fonts/selection.json',
 			);
+			$this->prefix   = 'icon-';
 			parent::__construct();
 		}
 		
@@ -70,9 +71,15 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		 */
 		function viivue_icomoon_select_html($icon_array, $value, $input_html, $vc_element = false): string{
 			$class = $vc_element ? 'vc-element' : 'acf';
+			$html  = '';
+			
+			// value must begin with prefix (support legacy version)
+			if(substr($value, 0, strlen($this->prefix)) !== $this->prefix){
+				$value = $this->prefix . $value;
+			}
 			
 			// wrapper
-			$html = '<div data-icomoon-app class="vii-icomoon ' . $class . ' unmounted" data-icomoon-selected="' . $value . '">';
+			$html .= '<div data-icomoon-app class="vii-icomoon ' . $class . ' unmounted" data-icomoon-selected="' . $value . '">';
 			
 			// json data
 			$html .= "<div style='display:none' data-icomoon-icons='" . json_encode($icon_array) . "'></div>";
@@ -119,8 +126,9 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			if($json_path && file_exists($json_path)){
 				$icomoon_json = json_decode(file_get_contents($json_path), true);
 				if($icomoon_json){
-					$prefix = $icomoon_json['preferences']['fontPref']['prefix'];
-					$icons  = viivue_array_key_exists('icons', $icomoon_json);
+					$prefix       = $icomoon_json['preferences']['fontPref']['prefix'];
+					$this->prefix = $prefix;
+					$icons        = viivue_array_key_exists('icons', $icomoon_json);
 					if($icons){
 						foreach($icons as $icon){
 							$icon_obj   = viivue_array_key_exists('icon', $icon);
