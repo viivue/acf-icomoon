@@ -4,7 +4,6 @@ class AcfIcomoonDom{
         this.type = type;
         this.id = uniqueId('icomoon-');
         this.app.setAttribute('data-icomoon-app', this.id);
-        this.appType = this.app.classList.contains('acf') ? 'acf' : 'vc-element';
 
         // get icons from json
         const iconsEl = this.app.querySelector('[data-icomoon-icons]');
@@ -44,13 +43,8 @@ class AcfIcomoonDom{
         });
     }
 
-    // get value based on type of app (ACF or VC Element)
-    getSavedValue(iconObj){
-        return this.appType === 'acf' ? iconObj.name : iconObj.icon_class;
-    }
-
-    getIconObjectByName(name){
-        const iconObject = this.icons.filter(i => this.getSavedValue(i) === name)[0];
+    getIconObject(icon_class){
+        const iconObject = this.icons.filter(i => i.icon_class === icon_class)[0];
         return typeof iconObject !== 'undefined' ? iconObject : {};
     }
 
@@ -60,13 +54,13 @@ class AcfIcomoonDom{
                 return {
                     id: _this.id,
                     icons: [..._this.icons],
-                    selected: _this.getIconObjectByName(_this.app.getAttribute('data-icomoon-selected')),
+                    selected: _this.getIconObject(_this.app.getAttribute('data-icomoon-selected')),
                     isMounted: true,
                 }
             },
             methods: {
                 selectIcon(name){
-                    this.selected = _this.getIconObjectByName(name);
+                    this.selected = _this.getIconObject(name);
                     _this.app.setAttribute('data-icomoon-selected', name);
 
                     EasyPopup.get(this.id).close();
@@ -113,7 +107,7 @@ class AcfIcomoonDom{
                     isHasMatchedSearch(){
                         if(this.searchQuery === '') return true;
 
-                        const matchedIcons = this.icons.filter(icon => icon.name.includes(this.searchQuery));
+                        const matchedIcons = this.icons.filter(icon => icon.icon_class.includes(this.searchQuery));
                         return matchedIcons.length > 0;
                     }
                 },
@@ -131,14 +125,14 @@ class AcfIcomoonDom{
                         <div class="vii-icomoon__popup-body">
                         
                             <ul class="vii-icomoon__icons" v-if="isHasMatchedSearch()">
-                                <li v-for="icon in icons" :class="{'search-hidden': !isShow(icon.name)}">
+                                <li v-for="icon in icons" :class="{'search-hidden': !isShow(icon.icon_class)}">
                                     <button 
-                                        :data-icomoon-select="icon.name" 
-                                        @click="$emit('selectIcon', icon.name)"
-                                        :class="{active: icon.name === selected.name}"
+                                        :data-icomoon-select="icon.icon_class" 
+                                        @click="$emit('selectIcon', icon.icon_class)"
+                                        :class="{active: icon.icon_class === selected.icon_class}"
                                      >
                                         <i v-html="icon.svg"></i>
-                                        <label v-html="searchLabel(icon.name)"></label>
+                                        <label v-html="searchLabel(icon.icon_class)"></label>
                                     </button>
                                 </li>
                             </ul>

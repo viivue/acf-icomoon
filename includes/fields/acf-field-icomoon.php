@@ -58,7 +58,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$value = esc_attr(viivue_array_key_exists('value', $field));
 			$name  = esc_attr(viivue_array_key_exists('name', $field));
 			
-			$input_html = '<input name="' . $name . '" v-model="selected.name" data-icomoon-input type="hidden">';
+			$input_html = '<input name="' . $name . '" v-model="selected.icon_class" data-icomoon-input type="hidden">';
 			
 			// output HTML
 			echo $this->viivue_icomoon_select_html($icon_array, $value, $input_html);
@@ -88,11 +88,11 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			
 			$html .= '<div class="vii-icomoon__custom-field-result" data-icomoon-popup-trigger>';
 			$html .= '<span class="icon-svg" v-if="selected.svg" v-html="selected.svg"></span>';
-			$html .= '<span class="icon-name" v-if="selected.name">{{selected.name}}</span>';
-			$html .= '<span class="icon-name empty" v-if="!selected.name">Click to select icon</span>';
+			$html .= '<span class="icon-name" v-if="selected.icon_class">{{selected.icon_class}}</span>';
+			$html .= '<span class="icon-name empty" v-if="!selected.icon_class">Click to select icon</span>';
 			$html .= '</div>';
 			
-			$html .= '<button class="vii-icomoon__custom-field-remove" v-if="selected.name" @click="clearSelection">⨉</button>';
+			$html .= '<button class="vii-icomoon__custom-field-remove" v-if="selected.icon_class" @click="clearSelection">⨉</button>';
 			
 			$html .= '</div>';
 			$html .= '</div>'; // end custom field
