@@ -25,12 +25,12 @@ This ACF field type is compatible with:
 == Screenshots ==
 
 1. New field type Icomoon in ACF
-2. Icomoon field type display in CMS
+2. Select icon
+3. Additional field for WPBakery (formerly Visual Composer)
 
 == Changelog ==
 
 = 4.0.0 =
-*Release Date - 06 December 2021*
+*Release Date - 20 April 2022*
 
-- Changed: Refactor HTML, CSS, JS
-- New: Search icons inside popup
+- New: Mass upgrade with VueJS and a brand-new layout.

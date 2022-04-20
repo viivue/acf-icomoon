@@ -36,10 +36,11 @@ from [releases](https://github.com/viivue/acf-icomoon/releases)
 
 Go to Field Groups > Create new Field and choose Icomoon Type in Content Group.
 
-![Screenshot 1](https://ps.w.org/acf-icomoon/assets/screenshot-1.png)
+![Screenshot 1](https://ps.w.org/acf-icomoon/assets/screenshot-3.png)
 
 How it looks in the page
 
+![Screenshot 2](https://ps.w.org/acf-icomoon/assets/screenshot-1.png)
 ![Screenshot 2](https://ps.w.org/acf-icomoon/assets/screenshot-2.png)
 
 ## Compatibility
