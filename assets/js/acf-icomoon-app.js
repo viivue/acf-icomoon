@@ -1,4 +1,4 @@
-const dev = true;
+const dev = false;
 const appSelector = '[data-icomoon-app]:not([data-v-app])';
 
 const initIcomoonSelect = e => {
