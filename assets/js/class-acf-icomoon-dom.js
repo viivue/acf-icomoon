@@ -71,7 +71,17 @@ class AcfIcomoonDom{
                         const groupItem = _this.app.closest('.vc_param');
                         if(groupItem){
                             const label = groupItem.querySelector('.vc_param-group-admin-labels');
-                            if(label) label.innerHTML = label.innerHTML.replace(lastSelected.icon_class, val);
+                            if(label){
+                                if(label.innerHTML){
+                                    // replace
+                                    label.innerHTML = label.innerHTML.replace(lastSelected.icon_class, val);
+                                }else{
+                                    // create
+                                    const labelTitle = groupItem.querySelector('[data-param_type="icomoon_class"] .wpb_element_label').textContent;
+                                    label.innerHTML = `<label>${labelTitle}</label>: ${val}`;
+                                    label.classList.remove('vc_hidden-label');
+                                }
+                            }
                         }
                     }
                 },
