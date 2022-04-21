@@ -1,9 +1,9 @@
 <div align="center">
- 
+
  <img width="100px" src="https://ps.w.org/acf-icomoon/assets/icon.svg" align="center" alt="Icomoon for Advanced Custom Fields" />
- 
+
  <h1 align="center" style="border:none; padding:0;">IcoMoon for Advanced Custom Fields</h1>
- 
+
  <p align="center">A new ACF field that allows to select icon from <a href="https://icomoon.io" target="_blank">IcoMoon</a> json.</p>
 
  <p align="center">
@@ -22,7 +22,6 @@
 
 </div>
 
-
 ## Getting started
 
 ### Download
@@ -36,11 +35,11 @@ from [releases](https://github.com/viivue/acf-icomoon/releases)
 
 Go to Field Groups > Create new Field and choose Icomoon Type in Content Group.
 
-![Screenshot 1](https://ps.w.org/acf-icomoon/assets/screenshot-3.png)
+![Screenshot 3](https://ps.w.org/acf-icomoon/assets/screenshot-3.png)
 
 How it looks in the page
 
-![Screenshot 2](https://ps.w.org/acf-icomoon/assets/screenshot-1.png)
+![Screenshot 1](https://ps.w.org/acf-icomoon/assets/screenshot-1.png)
 ![Screenshot 2](https://ps.w.org/acf-icomoon/assets/screenshot-2.png)
 
 ## Compatibility

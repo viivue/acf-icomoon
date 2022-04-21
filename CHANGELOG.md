@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
-### v4.0.0 - 2022-04-20
+### v4.0.0 - 2022-04-21
 
 - New: Mass upgrade with VueJS and a brand-new layout.
 
