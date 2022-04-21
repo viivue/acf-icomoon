@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 4.0.0 =
+*Release Date - 21 April 2022*
+
+- New: Mass upgrade with VueJS and a brand-new layout.
+
 = 3.4.0 =
 *Release Date - 06 December 2021*
 

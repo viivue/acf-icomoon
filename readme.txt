@@ -2,9 +2,9 @@
 Contributors: viivue, daomapsieucap, phucbm
 Tags: Advanced Custom Fields, ACF, Icomoon
 Requires at least: 4.7
-Tested up to: 5.8
-Requires PHP: 5.6
-Stable tag: 3.4.0
+Tested up to: 5.9.3
+Requires PHP: 7.0
+Stable tag: 4.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ This ACF field type is compatible with:
 
 == Installation ==
 
-1. Download Support For Icomoon with Advanced Custom Fields plugin
+1. Download "Support For Icomoon with Advanced Custom Fields" plugin
 2. Upload it to your wp-content/plugins directory
 3. Go to CMS admin plugins list and activate the plugin
 4. Go to Field Groups > Create new Field and choose Icomoon Type in Content Group.
@@ -25,12 +25,12 @@ This ACF field type is compatible with:
 == Screenshots ==
 
 1. New field type Icomoon in ACF
-2. Icomoon field type display in CMS
+2. Select icon
+3. Additional field for WPBakery Page Builder plugin (formerly Visual Composer)
 
 == Changelog ==
 
-= 3.4.0 =
-*Release Date - 06 December 2021*
+= 4.0.0 =
+*Release Date - 21 April 2022*
 
-- Changed: Refactor HTML, CSS, JS
-- New: Search icons inside popup
+- New: Mass upgrade with VueJS and a brand-new layout.

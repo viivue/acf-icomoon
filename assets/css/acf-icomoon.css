@@ -3,8 +3,6 @@
 ****************************/
 .vii-icomoon {
     position:relative; z-index:9;
-    --vico-right:110px;
-    --vico-left:calc(100% - var(--vico-right));
     --vico-field-height:30px;
     --vico-field-svg-size:20px;
 }
@@ -14,34 +12,31 @@
 /****************************
  * Icomoon Select - Custom Field
 ****************************/
-.vii-icomoon__custom-field, .vii-icomoon__custom-field-result {
-    display:flex; align-items:center;
-}
-.vii-icomoon__custom-field-col.left {width:var(--vico-left); position:relative;}
-.vii-icomoon__custom-field-col.right {width:var(--vico-right); padding-left:5px;}
+.vii-icomoon__custom-field, .vii-icomoon__custom-field-result {display:flex; align-items:center;}
+.vii-icomoon__custom-field-inner {width:100%; position:relative;}
 
 /* result */
 .vii-icomoon__custom-field-result {
     justify-content:flex-start; padding-left:10px;
-    border-radius:4px; border:1px solid #7e8993; height:var(--vico-field-height); line-height:1;
+    border-radius:4px; box-shadow:0 0 0 1px #7e8993;
+    height:var(--vico-field-height); line-height:1;
     transition:all .3s ease; cursor:pointer;
     background-color:#fff;
 }
 .vii-icomoon__custom-field-result .icon-svg svg {width:var(--vico-field-svg-size); height:var(--vico-field-svg-size); display:block;}
 .vii-icomoon__custom-field-result .icon-name {padding-left:10px;}
-.vii-icomoon__custom-field-result:hover {box-shadow:0 0 0 1px #6c75df;}
+.vii-icomoon__custom-field-result:hover {box-shadow:0 0 0 2px #6c75df;}
 
 /* button remove */
 .vii-icomoon:not(.empty) .vii-icomoon__custom-field-remove {display:block;}
 .vii-icomoon__custom-field-remove {
     position:absolute; top:50%; right:0;
-    transform:translateY(-50%); display:none;
-    background-color:red; color:#fff !important;
+    transform:translateY(-50%);
+    background-color:red; color:#fff !important; border:none;
     border-radius:0 4px 4px 0; height:100%; width:var(--vico-field-height);
-    line-height:var(--vico-field-height); text-align:center; text-decoration:none;
     font-size:14px; font-weight:700;
     transition:all .3s ease;
-    cursor:pointer;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
 }
 .vii-icomoon__custom-field-remove:not(:hover) {background-color:transparent; color:red !important;}
 
@@ -54,10 +49,10 @@
 /****************************
  * Icomoon Select - Popup
 ****************************/
-.vii-icomoon.popup-open {z-index:9000;}
+body.wp-admin .easy-popup-master {z-index:9999999;}
 
 /* custom scrollbar */
-.vii-icomoon *::-webkit-scrollbar {width:4px;}
+.vii-icomoon *::-webkit-scrollbar {width:3px;}
 .vii-icomoon *::-webkit-scrollbar-track {background:rgb(255 255 255);}
 .vii-icomoon *::-webkit-scrollbar-thumb {background-color:#007cba;}
 
@@ -68,61 +63,74 @@
 .vii-icomoon.popup-right .vii-icomoon__popup {left:auto; right:0;}
 
 .vii-icomoon__popup {
-    position:absolute; left:0; z-index:20;
-    margin:3px 0 0; width:300px; max-height:300px;
-    border-radius:4px; border:1px solid #7e8993;
-    background-color:rgb(235, 235, 240); box-shadow:0 0 10px 0 rgba(0, 0, 0, .15);
-    overflow:auto;
+    padding:0;
+    border-radius:10px; border:1px solid #7e8993;
+    background-color:#fff; box-shadow:0 0 10px 0 rgba(0, 0, 0, .15);
 }
+.vii-icomoon__popup * {box-sizing:border-box;}
+.vii-icomoon__popup-inner {position:relative; padding-top:57px;}
 
 /* popup head */
 .vii-icomoon__popup-head {
-    position:sticky; top:0;
-    margin-bottom:5px; padding:5px;
-    border-bottom:1px solid #ccc; background-color:rgb(255 255 255 / 50%);
-    -webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);
+    position:absolute; top:0; left:0; z-index:2; width:100%;
+    padding:10px 45px 10px 10px;
+    border-bottom:1px solid #ccc;
+    display:flex; align-items:center; justify-content:space-between;
 }
 
 /* popup head search */
 .vii-icomoon__search {width:100%;}
-.vii-icomoon__search input[type=search] {padding:4px 70px 4px 8px; min-height:30px;}
+.vii-icomoon__search input[type=search] {padding:4px 8px; min-height:30px; width:100%; border:none;}
+.vii-icomoon__search input[type=search]:focus {
+    box-shadow:0 0 0 2px #6c75df;
+}
 
 /* popup head count */
-.vii-icomoon__count-text {position:absolute; top:50%; right:15px; transform:translateY(-50%);}
+.vii-icomoon__count-text {white-space:nowrap; display:none;}
+
+/* body */
+.vii-icomoon__popup-body {max-height:400px; min-height:400px; overflow:auto; padding:10px;}
+
+/* close button */
+.vii-icomoon-easy-popup .easy-popup-close-button {height:60px; cursor:pointer;}
 
 /* icon list */
 ul.vii-icomoon__icons {
-    list-style:none; margin:0; padding:7px;
-    display:flex; flex-wrap:wrap;
+    list-style:none; margin:0;
+    display:flex; flex-wrap:wrap; justify-content:center;
 }
 
-ul.vii-icomoon__icons li {
-    padding:7px; margin:0; width:20%; aspect-ratio:1/1;
-}
-
-ul.vii-icomoon__icons li a {
-    width:100%; aspect-ratio:1/1; padding:5px;
+ul.vii-icomoon__icons li.search-hidden {display:none;}
+ul.vii-icomoon__icons li {margin:0; width:84px; aspect-ratio:1/1;}
+ul.vii-icomoon__icons li button {
+    width:100%; aspect-ratio:1/1; padding:5px; cursor:pointer;
     border-radius:4px; transition:all .3s ease;
-    display:flex; align-items:center; justify-content:center;
+    display:flex; align-items:center; justify-content:center; flex-direction:column;
+    background:transparent; border:none;
 }
 
-ul.vii-icomoon__icons li a svg {width:85%;}
+ul.vii-icomoon__icons li button i {display:block; margin-bottom:5px; height:25px;}
+ul.vii-icomoon__icons li button i svg {width:100%; height:100%;}
 
-ul.vii-icomoon__icons li a:hover {background-color:#fff;}
+ul.vii-icomoon__icons li button.active {box-shadow:inset 0 0 0 2px #6c75df;}
+ul.vii-icomoon__icons li button.active path {fill:#6c75df;}
+ul.vii-icomoon__icons li button:hover {box-shadow:0 0 0 2px #6c75df;}
 
-ul.vii-icomoon__icons li a.active,
-ul.vii-icomoon__icons li a:focus {
-    box-shadow:0 0 0 1px #6c75df;
-    background-color:#fff;
+ul.vii-icomoon__icons li label {
+    display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:100%;
+    font-size:11px; color:#909090;
 }
+.label-search-highlight {background:#6c75df52; color:#000;}
 
+/* icon list empty */
+.vii-icomoon__icons-empty {display:block; text-align:center; padding:20px;}
 
 /****************************
  * Icomoon Select - VC Param
 ****************************/
 .vii-icomoon.vc-element {
     --vico-right:130px;
-    --vico-field-height:45px;
+    --vico-field-height:44px;
     --vico-field-svg-size:25px;
 }
 
@@ -130,4 +138,27 @@ ul.vii-icomoon__icons li a:focus {
 .vii-icomoon.vc-element .vii-icomoon__popup {
     position:relative; top:auto; bottom:auto; left:auto;
     width:100%; max-width:300px; max-height:250px;
+}
+
+
+/* Loading */
+.unmounted {position:relative; border-radius:5px; overflow:hidden;}
+.unmounted:before {
+    content:""; position:absolute; top:0; left:0; right:0; bottom:0; z-index:999;
+    background-color:rgba(255, 255, 255, 0.5);
+    backdrop-filter:blur(5px);
+}
+.unmounted:after {
+    --loading-size:20px;
+    content:""; position:absolute; top:50%; left:50%; z-index:9999;
+    width:var(--loading-size); height:var(--loading-size);
+    margin:calc(-0.5 * var(--loading-size)) 0 0 calc(-0.5 * var(--loading-size));
+    border-radius:50%; border:1px dashed transparent;
+    border-bottom-color:#6c75df;
+    border-right-color:#6c75df;
+    animation:spinner .6s linear infinite;
+    box-sizing:border-box;
+}
+@keyframes spinner {
+    to {transform:rotate(360deg);}
 }
