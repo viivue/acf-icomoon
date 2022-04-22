@@ -206,7 +206,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			
 			$icon = array();
 			foreach($choices as $object){
-				if(viivue_array_key_exists('name', $object) === $value){
+				if(viivue_array_key_exists('icon_class', $object) === $value){
 					$icon = $object;
 					break;
 				}
