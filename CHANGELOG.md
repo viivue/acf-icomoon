@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
+### v4.0.1 - 2022-04-22
+
+- Fix: wrong output on ACF field
+
 ### v4.0.0 - 2022-04-20
 
 - New: Mass upgrade with VueJS and a brand-new layout.
