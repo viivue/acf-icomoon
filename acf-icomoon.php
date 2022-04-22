@@ -25,7 +25,7 @@ if(!defined('ABSPATH')){
  * Definitions
  */
 
-define('ACFICOMOON_VERSION', '4.0.0');
+const ACFICOMOON_VERSION = '4.0.0';
 define("ACFICOMOON_DIR", plugin_dir_path(__FILE__));
 define("ACFICOMOON_ASSETS_URL", plugin_dir_url(__FILE__) . 'assets/');
 define("ACFICOMOON_STYLESHEET_DIR", get_stylesheet_directory());
@@ -41,15 +41,12 @@ include_once(ACFICOMOON_DIR . 'includes/helper.php');
 include_once(ACFICOMOON_DIR . 'includes/acf-icomoon.php');
 
 /**
- * Init Functions
+ * WPBakery Page Builder
  */
 
-add_action('init', 'viivue_icomoon_init');
-function viivue_icomoon_init(){
-	// WPBakery Page Builder Param
-	if(defined('WPB_VC_VERSION')){
-		include_once(ACFICOMOON_DIR . 'includes/js_composer.php');
-	}
+add_action('vc_before_init', 'viivue_icomoon_vc_param');
+function viivue_icomoon_vc_param(){
+	include_once(ACFICOMOON_DIR . 'compatibility/js_composer.php');
 }
 
 /**
