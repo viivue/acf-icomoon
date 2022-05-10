@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 4.0.2 =
+*Release Date - 10 May 2022*
+
+- Fixed: compatible with Gutenberg blocks.
+
 = 4.0.1 =
 *Release Date - 22 April 2022*
 
