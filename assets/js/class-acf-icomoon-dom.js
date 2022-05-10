@@ -58,39 +58,22 @@ class AcfIcomoonDom{
                     isMounted: true,
                 }
             },
+            watch: {
+                selected(newVal, oldVal){
+                    setTimeout(() => {
+                        // manually trigger on change event
+                        // must have to trigger Gutenberg blocks to save value,
+                        // and for VC element to update labels in group field
+                        _this.app.querySelector('input[data-icomoon-input]').dispatchEvent(new Event('change', {'bubbles': true}));
+                    }, 100);
+                }
+            },
             methods: {
                 selectIcon(val){
-                    const lastSelected = this.selected;
                     this.selected = _this.getIconObject(val);
                     _this.app.setAttribute('data-icomoon-selected', val);
 
                     EasyPopup.get(this.id).close();
-
-                    // param group > update group label
-                    if(_this.type === 'vc-field' || _this.type === 'vc-param-field'){
-                        const groupItem = _this.app.closest('.vc_param');
-                        if(groupItem){
-                            const label = groupItem.querySelector('.vc_param-group-admin-labels');
-                            if(label){
-                                const labelTitle = groupItem.querySelector('[data-param_type="icomoon_class"] .wpb_element_label').textContent;
-                                const oldLabel = `<label>${labelTitle}</label>: ${lastSelected.icon_class}`;
-
-                                if(label.innerHTML){
-                                    if(label.innerHTML.includes(oldLabel)){
-                                        // replace
-                                        label.innerHTML = label.innerHTML.replace(lastSelected.icon_class, val);
-                                    }else{
-                                        // prepend
-                                        label.innerHTML = `<label>${labelTitle}</label>: ${val}, ` + label.innerHTML;
-                                    }
-                                }else{
-                                    // create
-                                    label.innerHTML = `<label>${labelTitle}</label>: ${val}`;
-                                    label.classList.remove('vc_hidden-label');
-                                }
-                            }
-                        }
-                    }
                 },
                 clearSelection(){
                     const lastSelected = this.selected;

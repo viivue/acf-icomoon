@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
+### v4.0.2 - 2022-05-10
+
+- Fixed: compatible with Gutenberg blocks
+
 ### v4.0.1 - 2022-04-22
 
 - Fixed: wrong output on ACF field.
