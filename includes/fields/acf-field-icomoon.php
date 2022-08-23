@@ -153,6 +153,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 								'name'       => $icon_name,
 								'icon_class' => $prefix . $icon_name,
 								'svg'        => $icon_svg,
+								'data' => $icon
 							);
 						}
 					}
@@ -223,7 +224,14 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			}
 			
 			// return icon html
-			return '<i class="' . viivue_array_key_exists('icon_class', $icon) . '"></i>';
+			$icon_inner_html = '';
+			if($icon['data']['icon']['isMulticolor']){
+				foreach($icon['data']['attrs'] as $index => $path){
+					$icon_inner_html .= '<span class="path' . ($index + 1) . '"></span>';
+				}
+			}
+			
+			return '<i class="' . viivue_array_key_exists('icon_class', $icon) . '">' . $icon_inner_html . '</i>';
 		}
 		
 	}
