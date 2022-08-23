@@ -136,6 +136,23 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 							$icon_attrs = viivue_array_key_exists('attrs', $icon_obj);
 							$icon_props = viivue_array_key_exists('properties', $icon);
 							$icon_name  = viivue_array_key_exists('name', $icon_props);
+							$icon_class = $prefix . $icon_name;
+							
+							// loop icon data
+							$icon_html_inner = '';
+							$icon_svg_inner  = '';
+							foreach($icon_paths as $index => $path){
+								$fill = $icon_attrs[$index]['fill'];
+								
+								// svg
+								$icon_svg_inner .= '<path fill="' . $fill . '" d="' . $path . '"></path>';
+								
+								// html
+								if(count($icon_paths) > 1){
+									// only output span if there are more than 1 path
+									$icon_html_inner .= '<span class="path' . ($index + 1) . '"></span>';
+								}
+							}
 							
 							// get svg (Format the SVG path)
 							$attr = 'width="' . $icon_size . '"';
@@ -145,16 +162,20 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 							
 							$icon_svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" ' . $attr . '>';
 							$icon_svg .= '<title>' . $icon_name . '</title>';
-							foreach($icon_paths as $index => $path){
-								$fill     = $icon_attrs[$index]['fill'];
-								$icon_svg .= '<path fill="' . $fill . '" d="' . $path . '"></path>';
-							}
+							$icon_svg .= $icon_svg_inner;
 							$icon_svg .= '</svg>';
 							
+							// get icon HTML
+							$icon_html = '<i class="' . $icon_class . '">';
+							$icon_html .= $icon_html_inner;
+							$icon_html .= '</i>';
+							
+							// return
 							$icon_array[] = array(
 								'name'       => $icon_name,
-								'icon_class' => $prefix . $icon_name,
+								'icon_class' => $icon_class,
 								'svg'        => $icon_svg,
+								'html'       => $icon_html,
 								'data'       => $icon
 							);
 						}
@@ -226,14 +247,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			}
 			
 			// return icon html
-			$icon_inner_html = '';
-			if($icon['data']['icon']['isMulticolor']){
-				foreach($icon['data']['attrs'] as $index => $path){
-					$icon_inner_html .= '<span class="path' . ($index + 1) . '"></span>';
-				}
-			}
-			
-			return '<i class="' . viivue_array_key_exists('icon_class', $icon) . '">' . $icon_inner_html . '</i>';
+			return viivue_array_key_exists('html', $icon);
 		}
 		
 	}
