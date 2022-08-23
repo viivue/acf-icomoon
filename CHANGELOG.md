@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
+### v4.0.3 - 2022-08-23
+
+- Return SVG: Support multiColor.
+- Return multiple types: icon class, SVG, Array, HTML.
+
 ### v4.0.2 - 2022-05-10
 
 - Fixed: compatible with Gutenberg blocks

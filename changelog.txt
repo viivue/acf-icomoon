@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 4.0.3 =
+*Release Date - 23 August 2022*
+
+- New: Return SVG: Support multiColor.
+- New: Return multiple types: icon class, SVG, Array, HTML.
+
 = 4.0.2 =
 *Release Date - 10 May 2022*
 
