@@ -133,6 +133,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 						foreach($icons as $icon){
 							$icon_obj   = viivue_array_key_exists('icon', $icon);
 							$icon_paths = viivue_array_key_exists('paths', $icon_obj);
+							$icon_attrs = viivue_array_key_exists('attrs', $icon_obj);
 							$icon_props = viivue_array_key_exists('properties', $icon);
 							$icon_name  = viivue_array_key_exists('name', $icon_props);
 							
@@ -144,8 +145,9 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 							
 							$icon_svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" ' . $attr . '>';
 							$icon_svg .= '<title>' . $icon_name . '</title>';
-							foreach($icon_paths as $path){
-								$icon_svg .= '<path fill="#444" d="' . $path . '"></path>';
+							foreach($icon_paths as $index => $path){
+								$fill     = $icon_attrs[$index]['fill'];
+								$icon_svg .= '<path fill="' . $fill . '" d="' . $path . '"></path>';
 							}
 							$icon_svg .= '</svg>';
 							
@@ -153,7 +155,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 								'name'       => $icon_name,
 								'icon_class' => $prefix . $icon_name,
 								'svg'        => $icon_svg,
-								'data' => $icon
+								'data'       => $icon
 							);
 						}
 					}
