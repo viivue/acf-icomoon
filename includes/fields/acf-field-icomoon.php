@@ -36,13 +36,14 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			// Admin field: Return value type
 			acf_render_field_setting($field, array(
 				'label'        => __('Return value', 'acf-icomoon'),
-				'instructions' => __('Specify the returned value on front end', 'acf-icomoon'),
+				'instructions' => __('Specify the returned value on front end.', 'acf-icomoon'),
 				'type'         => 'radio',
 				'name'         => 'display_type',
 				'choices'      => array(
-					'icon'       => 'Icon element (HTML)',
+					'icon'       => 'Icon element (HTML, Multicolor)',
 					'icon_class' => 'Icon class',
-					'svg'        => 'SVG element'
+					'svg'        => 'SVG element (Multicolor)',
+					'array'      => 'Array'
 				)
 			));
 		}
@@ -244,6 +245,11 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			// return svg
 			if($display_type == 'svg'){
 				return viivue_array_key_exists('svg', $icon);
+			}
+			
+			// return array
+			if($display_type == 'array'){
+				return viivue_array_key_exists('data', $icon);
 			}
 			
 			// return icon html
