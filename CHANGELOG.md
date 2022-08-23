@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
+### v4.0.4 - 2022-08-23
+
+- Fixed: Fix issue Uncaught TypeError: Cannot access offset of type string on string in
+  acf-icomoon/includes/fields/acf-field-icomoon.php:146.
+
 ### v4.0.3 - 2022-08-23
 
 - Return SVG: Support multiColor.
