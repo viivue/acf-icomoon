@@ -36,13 +36,14 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			// Admin field: Return value type
 			acf_render_field_setting($field, array(
 				'label'        => __('Return value', 'acf-icomoon'),
-				'instructions' => __('Specify the returned value on front end', 'acf-icomoon'),
+				'instructions' => __('Specify the returned value on front end.', 'acf-icomoon'),
 				'type'         => 'radio',
 				'name'         => 'display_type',
 				'choices'      => array(
-					'icon'       => 'Icon element (HTML)',
+					'icon'       => 'Icon element (HTML, Multicolor)',
 					'icon_class' => 'Icon class',
-					'svg'        => 'SVG element'
+					'svg'        => 'SVG element (Multicolor)',
+					'array'      => 'Array'
 				)
 			));
 		}
@@ -133,8 +134,26 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 						foreach($icons as $icon){
 							$icon_obj   = viivue_array_key_exists('icon', $icon);
 							$icon_paths = viivue_array_key_exists('paths', $icon_obj);
+							$icon_attrs = viivue_array_key_exists('attrs', $icon_obj);
 							$icon_props = viivue_array_key_exists('properties', $icon);
 							$icon_name  = viivue_array_key_exists('name', $icon_props);
+							$icon_class = $prefix . $icon_name;
+							
+							// loop icon data
+							$icon_html_inner = '';
+							$icon_svg_inner  = '';
+							foreach($icon_paths as $index => $path){
+								$fill = $icon_attrs[$index]['fill'];
+								
+								// svg
+								$icon_svg_inner .= '<path fill="' . $fill . '" d="' . $path . '"></path>';
+								
+								// html
+								if(count($icon_paths) > 1){
+									// only output span if there are more than 1 path
+									$icon_html_inner .= '<span class="path' . ($index + 1) . '"></span>';
+								}
+							}
 							
 							// get svg (Format the SVG path)
 							$attr = 'width="' . $icon_size . '"';
@@ -144,15 +163,21 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 							
 							$icon_svg = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" ' . $attr . '>';
 							$icon_svg .= '<title>' . $icon_name . '</title>';
-							foreach($icon_paths as $path){
-								$icon_svg .= '<path fill="#444" d="' . $path . '"></path>';
-							}
+							$icon_svg .= $icon_svg_inner;
 							$icon_svg .= '</svg>';
 							
+							// get icon HTML
+							$icon_html = '<i class="' . $icon_class . '">';
+							$icon_html .= $icon_html_inner;
+							$icon_html .= '</i>';
+							
+							// return
 							$icon_array[] = array(
 								'name'       => $icon_name,
-								'icon_class' => $prefix . $icon_name,
+								'icon_class' => $icon_class,
 								'svg'        => $icon_svg,
+								'html'       => $icon_html,
+								'data'       => $icon
 							);
 						}
 					}
@@ -222,8 +247,13 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 				return viivue_array_key_exists('svg', $icon);
 			}
 			
+			// return array
+			if($display_type == 'array'){
+				return viivue_array_key_exists('data', $icon);
+			}
+			
 			// return icon html
-			return '<i class="' . viivue_array_key_exists('icon_class', $icon) . '"></i>';
+			return viivue_array_key_exists('html', $icon);
 		}
 		
 	}
