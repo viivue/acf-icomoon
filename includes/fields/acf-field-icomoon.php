@@ -132,26 +132,30 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 					$icons        = viivue_array_key_exists('icons', $icomoon_json);
 					if($icons){
 						foreach($icons as $icon){
-							$icon_obj   = viivue_array_key_exists('icon', $icon);
-							$icon_paths = viivue_array_key_exists('paths', $icon_obj);
-							$icon_attrs = viivue_array_key_exists('attrs', $icon_obj);
-							$icon_props = viivue_array_key_exists('properties', $icon);
-							$icon_name  = viivue_array_key_exists('name', $icon_props);
-							$icon_class = $prefix . $icon_name;
+							$icon_obj      = viivue_array_key_exists('icon', $icon);
+							$icon_paths    = viivue_array_key_exists('paths', $icon_obj);
+							$icon_attrs    = viivue_array_key_exists('attrs', $icon_obj);
+							$is_multicolor = viivue_array_key_exists('isMulticolor', $icon_obj);
+							$icon_props    = viivue_array_key_exists('properties', $icon);
+							$icon_name     = viivue_array_key_exists('name', $icon_props);
+							$icon_class    = $prefix . $icon_name;
 							
 							// loop icon data
 							$icon_html_inner = '';
 							$icon_svg_inner  = '';
-							foreach($icon_paths as $index => $path){
-								$fill = viivue_array_key_exists('fill', $icon_attrs[$index]);
-								
-								// svg
-								$icon_svg_inner .= '<path fill="' . $fill . '" d="' . $path . '"></path>';
-								
-								// html
-								if(count($icon_paths) > 1){
-									// only output span if there are more than 1 path
-									$icon_html_inner .= '<span class="path' . ($index + 1) . '"></span>';
+							if($icon_paths){
+								foreach($icon_paths as $index => $path){
+									$fill = viivue_array_key_exists('fill', $icon_attrs[$index]);
+									if($fill){
+										// svg
+										$icon_svg_inner .= '<path fill="' . $fill . '" d="' . $path . '"></path>';
+										
+										// html
+										if($is_multicolor){
+											// only output span if there are more than 1 path
+											$icon_html_inner .= '<span class="path' . ($index + 1) . '"></span>';
+										}
+									}
 								}
 							}
 							

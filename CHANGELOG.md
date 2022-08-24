@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
+### v4.0.5 - 2022-08-24
+
+- Fixed: Check icon multicolor before output SVG.
+
 ### v4.0.4 - 2022-08-23
 
 - Fixed: Fix issue Uncaught TypeError: Cannot access offset of type string on string in

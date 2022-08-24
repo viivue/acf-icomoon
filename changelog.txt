@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 4.0.5 =
+*Release Date - 24 August 2022*
+
+- Fixed: Check icon multicolor before output SVG.
+
 = 4.0.4 =
 *Release Date - 23 August 2022*
 

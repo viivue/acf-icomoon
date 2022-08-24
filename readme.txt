@@ -4,7 +4,7 @@ Tags: Advanced Custom Fields, ACF, Icomoon
 Requires at least: 4.7
 Tested up to: 6.0.1
 Requires PHP: 7.0
-Stable tag: 4.0.3
+Stable tag: 4.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,7 +30,7 @@ This ACF field type is compatible with:
 
 == Changelog ==
 
-= 4.0.4 =
-*Release Date - 23 August 2022*
+= 4.0.5 =
+*Release Date - 24 August 2022*
 
-- Fixed: Fix issue Uncaught TypeError: Cannot access offset of type string on string in acf-icomoon/includes/fields/acf-field-icomoon.php:146.
+- Fixed: Check icon multicolor before output SVG.
