@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
+### v4.0.6 - 2022-08-25
+
+- Fixed: Fix issue return wrong SVG path.
+
 ### v4.0.5 - 2022-08-24
 
 - Fixed: Check icon multicolor before output SVG.

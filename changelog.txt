@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 4.0.6 =
+*Release Date - 25 August 2022*
+
+- Fixed: Fix issue return wrong SVG path.
+
 = 4.0.5 =
 *Release Date - 24 August 2022*
 

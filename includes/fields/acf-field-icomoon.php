@@ -145,16 +145,14 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 							$icon_svg_inner  = '';
 							if($icon_paths){
 								foreach($icon_paths as $index => $path){
-									$fill = viivue_array_key_exists('fill', $icon_attrs[$index]);
-									if($fill){
-										// svg
-										$icon_svg_inner .= '<path fill="' . $fill . '" d="' . $path . '"></path>';
-										
-										// html
-										if($is_multicolor){
-											// only output span if there are more than 1 path
-											$icon_html_inner .= '<span class="path' . ($index + 1) . '"></span>';
-										}
+									// svg
+									$fill           = viivue_array_key_exists('fill', $icon_attrs[$index]);
+									$icon_svg_inner .= '<path fill="' . $fill . '" d="' . $path . '"></path>';
+									
+									// html
+									if($fill && $is_multicolor){
+										// only output span if there are more than 1 path
+										$icon_html_inner .= '<span class="path' . ($index + 1) . '"></span>';
 									}
 								}
 							}
