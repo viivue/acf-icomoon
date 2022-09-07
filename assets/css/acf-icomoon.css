@@ -23,8 +23,8 @@
     transition:all .3s ease; cursor:pointer;
     background-color:#fff;
 }
-.vii-icomoon__custom-field-result .icon-svg svg {width:var(--vico-field-svg-size); height:var(--vico-field-svg-size); display:block;}
-.vii-icomoon__custom-field-result .icon-name {padding-left:10px;}
+.vii-icomoon__icon-svg svg {width:var(--vico-field-svg-size); height:var(--vico-field-svg-size); display:block;}
+.vii-icomoon__icon-name {padding-left:10px;}
 .vii-icomoon__custom-field-result:hover {box-shadow:0 0 0 2px #6c75df;}
 
 /* button remove */
