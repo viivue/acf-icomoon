@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
+### v4.0.7 - 2022-09-07
+
+- Fixed: Fix conflict class names.
+- Fixed: Remove PHP warning notices.
+
 ### v4.0.6 - 2022-08-25
 
 - Fixed: Fix issue return wrong SVG path.

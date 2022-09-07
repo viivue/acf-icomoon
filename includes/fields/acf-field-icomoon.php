@@ -146,7 +146,8 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 							if($icon_paths){
 								foreach($icon_paths as $index => $path){
 									// svg
-									$fill           = viivue_array_key_exists('fill', $icon_attrs[$index]);
+									$icon_attr      = viivue_array_key_exists($index, $icon_attrs, array());
+									$fill           = viivue_array_key_exists('fill', $icon_attr);
 									$icon_svg_inner .= '<path fill="' . $fill . '" d="' . $path . '"></path>';
 									
 									// html
