@@ -54,7 +54,11 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		 */
 		function render_field($field){
 			// list of icons
-			$icon_array = $this->viivue_get_icomoon_json(viivue_array_key_exists('selection_json_path', $field));
+			$path = viivue_array_key_exists('selection_json_path', $field);
+			if(strpos($path, ACFICOMOON_STYLESHEET_DIR) === false){
+				$path = ACFICOMOON_STYLESHEET_DIR . '/' . viivue_array_key_exists('selection_json_path', $field);
+			}
+			$icon_array = $this->viivue_get_icomoon_json($path);
 			
 			// selected value
 			$value = esc_attr(viivue_array_key_exists('value', $field));
@@ -120,6 +124,11 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		function viivue_get_icomoon_json($json_path = ''): array{
 			$icon_size  = 32;
 			$icon_array = array();
+			
+			if(strpos($json_path, ACFICOMOON_STYLESHEET_DIR) === false){
+				$json_path = ACFICOMOON_STYLESHEET_DIR . '/' . $json_path;
+			}
+			
 			if(empty($json_path) || !file_exists($json_path)){
 				$json_path = ACFICOMOON_STYLESHEET_DIR . '/assets/fonts/selection.json';
 			}
@@ -228,7 +237,10 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 				return $value;
 			}
 			
-			$path         = $field['selection_json_path'];
+			$path = $field['selection_json_path'];
+			if(strpos($path, ACFICOMOON_STYLESHEET_DIR) === false){
+				$path = ACFICOMOON_STYLESHEET_DIR . '/' . $path;
+			}
 			$choices      = $this->viivue_get_icomoon_json($path);
 			$display_type = viivue_array_key_exists('display_type', $field);
 			
