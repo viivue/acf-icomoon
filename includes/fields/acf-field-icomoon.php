@@ -55,7 +55,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		function render_field($field){
 			// list of icons
 			$path = viivue_array_key_exists('selection_json_path', $field);
-			if(strpos($path, ACFICOMOON_STYLESHEET_DIR) === false){
+			if($path && strpos($path, ACFICOMOON_STYLESHEET_DIR) === false){
 				$path = ACFICOMOON_STYLESHEET_DIR . '/' . viivue_array_key_exists('selection_json_path', $field);
 			}
 			$icon_array = $this->viivue_get_icomoon_json($path);
@@ -125,7 +125,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$icon_size  = 32;
 			$icon_array = array();
 			
-			if(strpos($json_path, ACFICOMOON_STYLESHEET_DIR) === false){
+			if($json_path && strpos($json_path, ACFICOMOON_STYLESHEET_DIR) === false){
 				$json_path = ACFICOMOON_STYLESHEET_DIR . '/' . $json_path;
 			}
 			
@@ -238,7 +238,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			}
 			
 			$path = $field['selection_json_path'];
-			if(strpos($path, ACFICOMOON_STYLESHEET_DIR) === false){
+			if($path && strpos($path, ACFICOMOON_STYLESHEET_DIR) === false){
 				$path = ACFICOMOON_STYLESHEET_DIR . '/' . $path;
 			}
 			$choices      = $this->viivue_get_icomoon_json($path);
