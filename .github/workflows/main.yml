@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get the latest code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: 🚀 WordPress Plugin Deploy
         id: deploy
@@ -21,11 +21,12 @@ jobs:
           SLUG: ${{ secrets.SLUG }}
 
       - name: 📋 Upload release asset
-        uses: actions/upload-release-asset@v1
+        uses: rops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: viivue/acf-icomoon
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ${{ steps.deploy.outputs.zip-path }}
-          asset_name: ${{ github.event.repository.name }}.zip
+          #asset_path: ${{ steps.deploy.outputs.zip-path }}
+          #asset_name: ${{ github.event.repository.name }}.zip
           asset_content_type: application/zip
