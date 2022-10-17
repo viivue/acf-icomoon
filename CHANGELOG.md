@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
+### v4.0.8 - 2022-10-17
+
+- Fixed: Fix setting json path is not working.
+
 ### v4.0.7 - 2022-09-07
 
 - Fixed: Fix conflict class names.
