@@ -20,13 +20,23 @@ jobs:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SLUG: ${{ secrets.SLUG }}
 
-      - name: 📋 Upload release asset
-        uses: rops/action-gh-release@v1
+      #      - name: 📋 Upload release asset
+      #        uses: rops/action-gh-release@v1
+      #        env:
+      #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #          GITHUB_REPOSITORY: viivue/acf-icomoon
+      #        with:
+      #          upload_url: ${{ github.event.release.upload_url }}
+      #          #asset_path: ${{ steps.deploy.outputs.zip-path }}
+      #          #asset_name: ${{ github.event.repository.name }}.zip
+      #          asset_content_type: application/zip
+
+      - name: 📂 Upload release asset
+        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: viivue/acf-icomoon
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          #asset_path: ${{ steps.deploy.outputs.zip-path }}
-          #asset_name: ${{ github.event.repository.name }}.zip
+          asset_path: ${{ steps.deploy.outputs.zip-path }}
+          asset_name: ${{ github.event.repository.name }}.zip
           asset_content_type: application/zip
