@@ -1,17 +1,15 @@
-name: 📋 Plugin asset/readme update
+name: 🛸 Plugin asset/readme update
 on:
   push:
     branches:
       - trunk
 jobs:
   trunk:
-    name: 🎉 Push to trunk
+    name: 🚚 Push to trunk
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Get the latest code
-        uses: actions/checkout@v2
-
-      - name: 🚀 WordPress.org plugin asset/readme update
+      - uses: actions/checkout@master
+      - name: WordPress.org plugin asset/readme update
         uses: 10up/action-wordpress-plugin-asset-update@stable
         env:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}

@@ -1,4 +1,4 @@
-name: 🛸 Deploy to WordPress.org
+name: 🚀 Deploy to WordPress.org
 on:
   release:
     types: [ published ]
@@ -7,10 +7,10 @@ jobs:
     name: 🎉 New release
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Get the latest code
-        uses: actions/checkout@v2
+      - name: 🚚 Checkout code
+        uses: actions/checkout@master
 
-      - name: 🚀 WordPress Plugin Deploy
+      - name: 🗃️ WordPress Plugin Deploy
         id: deploy
         uses: 10up/action-wordpress-plugin-deploy@stable
         with:
@@ -19,17 +19,6 @@ jobs:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           #SLUG: ${{ secrets.SLUG }}
-
-      #      - name: 📋 Upload release asset
-      #        uses: rops/action-gh-release@v1
-      #        env:
-      #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #          GITHUB_REPOSITORY: viivue/acf-icomoon
-      #        with:
-      #          upload_url: ${{ github.event.release.upload_url }}
-      #          #asset_path: ${{ steps.deploy.outputs.zip-path }}
-      #          #asset_name: ${{ github.event.repository.name }}.zip
-      #          asset_content_type: application/zip
 
       - name: 📂 Upload release asset
         uses: actions/upload-release-asset@v1
