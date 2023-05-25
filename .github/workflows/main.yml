@@ -18,7 +18,7 @@ jobs:
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SLUG: ${{ secrets.SLUG }}
+          #SLUG: ${{ secrets.SLUG }}
 
       #      - name: 📋 Upload release asset
       #        uses: rops/action-gh-release@v1
