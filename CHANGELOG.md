@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Changelog
 
+### v4.0.9 - 2023-05-25
+
+- Changed: Improve release plugin workflow.
+
 ### v4.0.8 - 2022-10-17
 
 - Fixed: Fix setting json path is not working.

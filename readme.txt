@@ -4,7 +4,7 @@ Tags: Advanced Custom Fields, ACF, Icomoon
 Requires at least: 4.7
 Tested up to: 6.0.2
 Requires PHP: 7.2
-Stable tag: 4.0.8
+Stable tag: 4.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,7 +30,7 @@ This ACF field type is compatible with:
 
 == Changelog ==
 
-= 4.0.8 =
-*Release Date - 14 October 2022*
+= 4.0.9 =
+*Release Date - 25 May 2023*
 
-- Fixed: Fix setting json path is not working.
+- Changed: Improve release plugin workflow.
