@@ -2,9 +2,9 @@
 Contributors: viivue, daomapsieucap, phucbm
 Tags: Advanced Custom Fields, ACF, Icomoon
 Requires at least: 4.7
-Tested up to: 6.5.4
+Tested up to: 6.6.2
 Requires PHP: 7.4
-Stable tag: 4.0.9
+Stable tag: 4.0.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,7 +30,7 @@ This ACF field type is compatible with:
 
 == Changelog ==
 
-= 4.0.9 =
-*Release Date - 25 May 2023*
+= 4.0.10 =
+*Release Date - 11 Oct 2024*
 
-- Changed: Improve release plugin workflow.
+- Changed: Use Vue production js file.
