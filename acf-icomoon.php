@@ -25,12 +25,7 @@ if(!defined('ABSPATH')){
  * Definitions
  */
 
-if(!function_exists('get_plugin_data')){
-	require_once(ABSPATH . 'wp-admin/includes/plugin.php');
-}
-$plugin_data = get_plugin_data(__FILE__);
-
-define("ACFICOMOON_VERSION", $plugin_data['Version']);
+define("ACFICOMOON_VERSION", '4.0.10');
 define("ACFICOMOON_DIR", plugin_dir_path(__FILE__));
 define("ACFICOMOON_ASSETS_URL", plugin_dir_url(__FILE__) . 'assets/');
 define("ACFICOMOON_STYLESHEET_DIR", get_stylesheet_directory());
