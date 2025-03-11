@@ -30,8 +30,7 @@ This ACF field type is compatible with:
 
 == Changelog ==
 
-= 4.0.11 =
+= 4.0.12 =
 *Release Date - 11 March 2025*
 
-- Fixed: _load_textdomain_just_in_time was called incorrectly from WordPress 6.7.1
-- Changed: Improve JSON path configuration.
+- Fixed: Fix wrong function prefix.
