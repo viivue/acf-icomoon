@@ -122,9 +122,9 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$icon_size  = 32;
 			$icon_array = [];
 			
-			$folder_path   = ev_array_key_exists('dirname', pathinfo(get_template_directory()));
+			$folder_path   = viivue_array_key_exists('dirname', pathinfo(get_template_directory()));
 			$recursive_dir = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($folder_path));
-			$filename      = ev_array_key_exists('basename', pathinfo($json_path));
+			$filename      = viivue_array_key_exists('basename', pathinfo($json_path));
 			
 			if(!empty($json_path)){
 				foreach($recursive_dir as $file){
