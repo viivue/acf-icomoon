@@ -136,7 +136,9 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			}
 			
 			if(empty($json_path) || !file_exists($json_path)){
-				$json_path = ACFICOMOON_STYLESHEET_DIR . '/assets/fonts/selection.json';
+				$json_path = ACFICOMOON_DIR . '/assets/fonts/selection.json';
+				
+				$GLOBALS['empty_json'] = true;
 			}
 			
 			if($json_path && file_exists($json_path)){
