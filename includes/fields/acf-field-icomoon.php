@@ -130,21 +130,12 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$icon_size  = 32;
 			$icon_array = [];
 			
-			$folder_path   = viivue_array_key_exists('dirname', pathinfo(get_template_directory()));
-			$recursive_dir = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($folder_path));
-			$filename      = viivue_array_key_exists('basename', pathinfo($json_path));
-			
-			if(!empty($json_path)){
-				foreach($recursive_dir as $file){
-					if($file->getBasename() == $filename){
-						$json_path = $file->getPathname();
-						break;
-					}
-				}
-			}
-			
-			if(empty($json_path) || !file_exists($json_path)){
-				$json_path = ACFICOMOON_STYLESHEET_DIR . '/assets/fonts/selection.json';
+			if(empty($json_path)){
+				$json_path = ACFICOMOON_DIR . '/assets/fonts/selection.json';
+				
+				$GLOBALS['empty_json'] = true;
+			}else{
+				$json_path = viivue_get_icomoon_json_path($json_path);
 			}
 			
 			if($json_path && file_exists($json_path)){
