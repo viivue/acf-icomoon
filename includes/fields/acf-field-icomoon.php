@@ -54,7 +54,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		 */
 		function render_field($field){
 			// list of icons
-			$path       = viivue_array_key_exists('selection_json_path', $field);
+			$path       = viivue_get_icomoon_json_path(viivue_array_key_exists('selection_json_path', $field));
 			$icon_array = $this->viivue_get_icomoon_json($path);
 			
 			// selected value
@@ -64,7 +64,15 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$input_html = '<input name="' . $name . '" v-model="selected.icon_class" data-icomoon-input type="hidden">';
 			
 			// output HTML
-			echo $this->viivue_icomoon_select_html($icon_array, $value, $input_html);
+			if(empty($path)){
+				echo $this->viivue_icomoon_select_html($icon_array, $value, $input_html);
+			}else{
+				if(file_exists($path)){
+					echo $this->viivue_icomoon_select_html($icon_array, $value, $input_html);
+				}else{
+					echo '<div class="acf-notice -error acf-error-message"><p>' . __('JSON file didn\'t exist. Please use the correct file path.', 'acf-icomoon') . '</p></div>';
+				}
+			}
 		}
 		
 		
