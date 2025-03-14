@@ -14,3 +14,19 @@ if(!function_exists('viivue_array_key_exists')){
 		return $default;
 	}
 }
+
+/**
+ * Get icomoon json path
+ */
+
+if(!function_exists('viivue_get_icomoon_json_path')){
+	function viivue_get_icomoon_json_path($json_path = ''){
+		if(!empty($json_path)){
+			$theme_path      = get_stylesheet_directory();
+			$json_path_array = array_unique(array_merge(explode('/', $theme_path), explode('/', $json_path)));
+			$json_path       = implode('/', $json_path_array);
+		}
+		
+		return $json_path;
+	}
+}
