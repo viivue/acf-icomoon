@@ -64,3 +64,15 @@ function viivue_icomoon_admin_notices(){
 		echo '<div class="notice notice-warning"><p>' . $notice . '</p></div>';
 	}
 }
+
+/**
+ *  Enqueue assets FE
+ */
+
+add_action('wp_footer', 'viivue_acf_icomoon_enqueue_assets');
+function viivue_acf_icomoon_enqueue_assets(){
+	if(viivue_array_key_exists('empty_json', $GLOBALS)){
+		wp_enqueue_style('viivue-acf-icomoon-fonts', ACFICOMOON_ASSETS_URL . "css/fonts.css", false, ACFICOMOON_VERSION);
+		unset($GLOBALS['empty_json']);
+	}
+}
