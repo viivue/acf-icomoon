@@ -131,9 +131,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$icon_array = [];
 			
 			if(empty($json_path)){
-				$json_path = ACFICOMOON_DIR . '/assets/fonts/selection.json';
-				
-				$GLOBALS['empty_json'] = true;
+				$json_path = ACFICOMOON_STYLESHEET_DIR . '/assets/fonts/selection.json';
 			}else{
 				$json_path = viivue_get_icomoon_json_path($json_path);
 			}
