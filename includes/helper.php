@@ -16,7 +16,8 @@ if(!function_exists('viivue_array_key_exists')){
 }
 
 /**
- * Get icomoon json path
+ * Get icomoon JSON path
+ * Return valid JSON path start from wp-content/themes/your-theme
  */
 
 if(!function_exists('viivue_get_icomoon_json_path')){
