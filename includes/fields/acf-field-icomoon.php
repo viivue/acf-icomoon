@@ -122,20 +122,19 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			return $html;
 		}
 		
-		
 		/**
 		 * Get array of icons from json
 		 */
 		function viivue_get_icomoon_json($json_path = ''): array{
+			global $vii_acf_icomoon_empty_json;
 			$icon_size  = 32;
 			$icon_array = [];
+			$json_path  = viivue_get_icomoon_json_path($json_path);
 			
-      if(empty($json_path)){
-				$json_path = ACFICOMOON_STYLESHEET_DIR . '/assets/fonts/selection.json';
+			if(empty($json_path)){
+				$json_path = ACFICOMOON_DIR . '/assets/fonts/selection.json';
 				
-				$GLOBALS['empty_json'] = true;
-			}else{
-				$json_path = viivue_get_icomoon_json_path($json_path);
+				$vii_acf_icomoon_empty_json = true;
 			}
 			
 			if($json_path && file_exists($json_path)){
@@ -203,7 +202,6 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			
 			return $icon_array;
 		}
-		
 		
 		/**
 		 *  Add assets, inherit from acf_field class
