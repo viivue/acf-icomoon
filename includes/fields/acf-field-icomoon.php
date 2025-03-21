@@ -14,7 +14,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$this->label    = __('Icomoon', 'acf-icomoon');
 			$this->category = 'content';
 			$this->defaults = [
-				'selection_json_path' => viivue_acf_icomoon_default_value_selection_json(),
+				'selection_json_path' => viivue_acf_icomoon_default_json_option(),
 			];
 			$this->prefix   = 'icon-';
 			parent::__construct();
