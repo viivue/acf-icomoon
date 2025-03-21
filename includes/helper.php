@@ -34,6 +34,11 @@ if(!function_exists('viivue_get_icomoon_json_path')){
 			$theme_path      = get_stylesheet_directory();
 			$json_path_array = array_unique(array_merge(explode('/', $theme_path), explode('/', $json_path)));
 			$json_path       = implode('/', $json_path_array);
+		}else{
+			$json_path = ACFICOMOON_STYLESHEET_DIR . '/assets/fonts/selection.json';
+			if(!file_exists($json_path)){
+				return '';
+			}
 		}
 		
 		return $json_path;
