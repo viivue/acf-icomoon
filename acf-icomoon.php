@@ -66,7 +66,7 @@ function viivue_icomoon_admin_notices(){
 }
 
 /**
- *  Enqueue assets FE
+ *  Enqueue assets for default icomoon
  */
 
 add_action('wp_footer', 'viivue_acf_icomoon_enqueue_assets');

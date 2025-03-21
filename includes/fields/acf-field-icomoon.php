@@ -131,9 +131,9 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			$icon_array = [];
 			$json_path  = viivue_get_icomoon_json_path($json_path);
 			
+			// use plugin default icomoon if json path is empty
 			if(empty($json_path)){
-				$json_path = ACFICOMOON_DIR . '/assets/fonts/selection.json';
-				
+				$json_path                  = ACFICOMOON_DIR . '/assets/fonts/selection.json';
 				$vii_acf_icomoon_empty_json = true;
 			}
 			
