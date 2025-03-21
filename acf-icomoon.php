@@ -73,6 +73,6 @@ add_action('wp_footer', 'viivue_acf_icomoon_enqueue_assets');
 function viivue_acf_icomoon_enqueue_assets(){
 	global $vii_acf_icomoon_empty_json;
 	if($vii_acf_icomoon_empty_json){
-		wp_enqueue_style('viivue-acf-icomoon-fonts', ACFICOMOON_ASSETS_URL . "css/fonts.css", false, ACFICOMOON_VERSION);
+		wp_enqueue_style('viivue-acf-icomoon', ACFICOMOON_ASSETS_URL . "css/icomoon.css", false, ACFICOMOON_VERSION);
 	}
 }
