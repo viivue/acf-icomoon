@@ -44,3 +44,15 @@ if(!function_exists('viivue_get_icomoon_json_path')){
 		return $json_path;
 	}
 }
+
+/**
+ * Set default value for selection_json_path
+ */
+
+if(!function_exists('viivue_acf_icomoon_default_value_selection_json')){
+	function viivue_acf_icomoon_default_value_selection_json(){
+		$json_path = ACFICOMOON_STYLESHEET_DIR . '/assets/fonts/selection.json';
+		
+		return file_exists($json_path) ? $json_path : '';
+	}
+}
