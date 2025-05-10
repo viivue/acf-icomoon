@@ -124,6 +124,27 @@ if ( $icon && is_array( $icon ) ) {
 ?>
 ```
 
+**Example 4: Using the Icomoon set from plugin**
+
+If you are using the Icomoon set from the plugin, you can use the following code to display the icon:
+
+```php
+<?php
+// Enqueue IcoMoon assets (should be in functions.php)
+add_action( 'wp_enqueue_scripts', 'vii_acf_icomoon_enqueue_styles' );
+function vii_acf_icomoon_enqueue_styles() {
+    wp_enqueue_style( 'vii-icomoon', ACFICOMOON_STYLESHEET_DIR . '/assets/css/icomoon.css', array(), '1.0.0' );
+}
+
+// In your template file, output the icon
+$icon = get_field( 'icon' );
+if ( $icon && is_array( $icon ) ) {
+    echo '<i class="' . esc_attr( $icon['class'] ) . '"></i>';
+    // Alternatively, use Unicode
+    // echo '<span style="font-family: \'icomoon\';">' . esc_html( $icon['unicode'] ) . '</span>';
+}
+?>
+
 **Notes**:
 
 - Always use `esc_attr()` or `esc_html()` to sanitize output for security.
