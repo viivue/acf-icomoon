@@ -144,6 +144,7 @@ if ( $icon && is_array( $icon ) ) {
     // echo '<span style="font-family: \'icomoon\';">' . esc_html( $icon['unicode'] ) . '</span>';
 }
 ?>
+```
 
 **Notes**:
 
