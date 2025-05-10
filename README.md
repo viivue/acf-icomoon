@@ -114,9 +114,7 @@ If the return value is set to `Array`, the field returns an array containing the
 <?php
 $icon = get_field( 'icon' );
 if ( $icon && is_array( $icon ) ) {
-    echo '<i class="' . esc_attr( $icon['class'] ) . '"></i>';
-    // Alternatively, use Unicode
-    // echo '<span style="font-family: \'icomoon\';">' . esc_html( $icon['unicode'] ) . '</span>';
+    var_dump($icon); // dump the icon array for debugging, you can use it to get the icon name, class, and SVG code
 }
 ?>
 ```
