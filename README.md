@@ -1,9 +1,26 @@
-# ACF IcoMoon
+<div align="center">
 
-🔩 Advanced Custom Field add-on to select IcoMoon icons.
+ <img width="100px" src="https://ps.w.org/acf-icomoon/assets/icon.svg" align="center" alt="Icomoon for Advanced Custom Fields" />
 
-This plugin provides a custom field type for Advanced Custom Fields (ACF) that allows users to select icons from an
-IcoMoon `selection.json` file. It is compatible with ACF 5.7+ and integrates seamlessly with WordPress.
+ <h1 align="center" style="border:none; padding:0;">IcoMoon for Advanced Custom Fields</h1>
+
+ <p align="center">A new ACF field that allows to select icon from <a href="https://icomoon.io" target="_blank">IcoMoon</a> json.</p>
+
+ <p align="center">
+   <a href="https://github.com/viivue/acf-icomoon/releases/latest">
+   <img src="https://badgen.net/github/release/viivue/acf-icomoon/?cache=600">
+   </a><a href="https://wordpress.org/plugins/acf-icomoon/">
+   <img src="https://img.shields.io/badge/-WordPress-0273A9">
+   </a>
+    <a href="https://icomoon.io">
+   <img src="https://img.shields.io/badge/-IcoMoon-29C3F9">
+   </a>
+    <a href="https://www.advancedcustomfields.com/">
+   <img src="https://img.shields.io/badge/-Advanced Custom Fields-347C39">
+   </a>
+ </p>
+
+</div>
 
 ## Installation
 
