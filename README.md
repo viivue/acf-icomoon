@@ -135,7 +135,11 @@ Here’s an example of how you might integrate the IcoMoon icon in a WordPress t
 // Enqueue IcoMoon assets (should be in functions.php)
 add_action( 'wp_enqueue_scripts', 'vii_acf_icomoon_enqueue_styles' );
 function vii_acf_icomoon_enqueue_styles() {
+    // use your icomoon style 
     wp_enqueue_style( 'vii-icomoon', get_template_directory_uri() . '/assets/css/style.css', array(), '1.0.0' );
+    
+    // or you can use the plugin's icomoon style
+    wp_enqueue_style( 'vii-icomoon', ACFICOMOON_STYLESHEET_DIR . '/assets/css/icomoon.css', array(), '1.0.0' );
 }
 
 // In your template file
@@ -148,17 +152,6 @@ if ( $icon_class ) {
     <?php
 }
 ?>
-```
-
-Or you can use the icomoon set from plugin by using the following code:
-
-```php
-<?php
-// Enqueue IcoMoon assets (should be in functions.php)
-add_action( 'wp_enqueue_scripts', 'vii_acf_icomoon_enqueue_styles' );
-function vii_acf_icomoon_enqueue_styles() {
-    wp_enqueue_style( 'vii-icomoon', ACFICOMOON_STYLESHEET_DIR . '/assets/css/icomoon.css', array(), '1.0.0' );
-}
 ```
 
 ### Troubleshooting
