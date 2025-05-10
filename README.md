@@ -64,11 +64,11 @@ IcoMoon font files (`.eot`, `.ttf`, `.woff`, `.svg`) and `style.css` (generated 
 directory (e.g., `your-theme/assets/fonts/` and `your-theme/assets/css/`).
 
 ```php
-function theme_enqueue_icomoon() {
-    // Enqueue IcoMoon stylesheet
-    wp_enqueue_style( 'icomoon', get_template_directory_uri() . '/assets/css/style.css', array(), '1.0.0' );
+// Enqueue IcoMoon assets (should be in functions.php)
+add_action( 'wp_enqueue_scripts', 'vii_acf_icomoon_enqueue_styles' );
+function vii_acf_icomoon_enqueue_styles() {
+    wp_enqueue_style( 'vii-icomoon', get_template_directory_uri() . '/assets/css/style.css', array(), '1.0.0' );
 }
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_icomoon' );
 ```
 
 **Notes**:
@@ -138,10 +138,10 @@ Here’s an example of how you might integrate the IcoMoon icon in a WordPress t
 ```php
 <?php
 // Enqueue IcoMoon assets (should be in functions.php)
-function theme_enqueue_icomoon() {
-    wp_enqueue_style( 'icomoon', get_template_directory_uri() . '/assets/css/style.css', array(), '1.0.0' );
+add_action( 'wp_enqueue_scripts', 'vii_acf_icomoon_enqueue_styles' );
+function vii_acf_icomoon_enqueue_styles() {
+    wp_enqueue_style( 'vii-icomoon', get_template_directory_uri() . '/assets/css/style.css', array(), '1.0.0' );
 }
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_icomoon' );
 
 // In your template file
 $icon_class = get_field( 'icon' );
@@ -149,7 +149,6 @@ if ( $icon_class ) {
     ?>
     <div class="icon-container">
         <i class="<?php echo esc_attr( $icon_class ); ?>"></i>
-        <span><?php the_title(); ?></span>
     </div>
     <?php
 }
