@@ -178,7 +178,3 @@ in [CHANGELOG.md](CHANGELOG.md).
 
 Contributions are welcome! Please submit a Pull Request or open an issue
 on [GitHub](https://github.com/viivue/acf-icomoon).
-
-## License
-
-This project is licensed under the GPL v2 or later - see the [LICENSE](LICENSE) file for details.
