@@ -185,8 +185,6 @@ if ( $icon && is_array( $icon ) ) {
   directory.
 - **Incorrect Font Family**: Check that the font-family name in your CSS matches the one defined in IcoMoon’s
   `style.css`.
-- **Multicolor/Duotone Icons**: Note that multicolor or duotone icons may require additional CSS handling, as reported
-  in [Issue #11](https://github.com/viivue/acf-icomoon/issues/11).
 
 ## Compatibility
 
