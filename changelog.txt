@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 4.0.13 =
+*Release Date - 25 May 2025*
+
+- Changed: Improve & validate selection JSON path.
+- Changed: Add default callback JSON from plugin.
+
 = 4.0.12 =
 *Release Date - 11 March 2025*
 
