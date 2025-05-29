@@ -23,25 +23,45 @@ if(!function_exists('viivue_array_key_exists')){
 if(!function_exists('viivue_get_icomoon_json_path')){
 	function viivue_get_icomoon_json_path($json_path = ''){
 		if(!empty($json_path)){
-			$file_name = basename($json_path);
+			$file_name  = basename($json_path);
+			$theme_path = ACFICOMOON_STYLESHEET_DIR;
 			
 			// only accept JSON file
 			if(pathinfo($file_name, PATHINFO_EXTENSION) !== 'json'){
 				return '';
 			}
 			
-			// return the valid path
-			$theme_path      = get_stylesheet_directory();
-			$json_path_array = array_unique(array_merge(explode('/', $theme_path), explode('/', $json_path)));
-			$json_path       = implode('/', $json_path_array);
-		}else{
-			$json_path = ACFICOMOON_STYLESHEET_DIR . '/assets/fonts/selection.json';
-			if(!file_exists($json_path)){
-				return '';
+			// If the json_path is already absolute and exists
+			if(file_exists($json_path)){
+				return $json_path;
+			}
+			
+			// If the json_path is relative, we need to find the full path
+			// for example [your-theme]/assets/fonts/selection.json or wp-content/themes/[your-theme]/assets/fonts/selection.json
+			$array_json_path     = explode('/', $json_path);
+			$json_path_separator = viivue_array_key_exists(0, $array_json_path);
+			if($json_path_separator){
+				$position = strpos($theme_path, $json_path_separator);
+				if($position !== false){
+					$json_path = substr($theme_path, 0, $position) . $json_path;
+					if(file_exists($json_path)){
+						return $json_path;
+					}
+				}
+			}
+			
+			// Fallback to search and return any selection.json from theme
+			$folder_path   = viivue_array_key_exists('dirname', pathinfo(get_template_directory()));
+			$recursive_dir = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($folder_path));
+			$filename      = viivue_array_key_exists('basename', pathinfo($json_path));
+			foreach($recursive_dir as $file){
+				if($file->getBasename() == $filename){
+					return $file->getPathname();
+				}
 			}
 		}
 		
-		return $json_path;
+		return viivue_acf_icomoon_default_json_option();
 	}
 }
 
