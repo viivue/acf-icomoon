@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 4.0.14 =
+*Release Date - 30 May 2025*
+
+- Fix: Fix wrong relative path for selection.json.
+
 = 4.0.13 =
 *Release Date - 25 May 2025*
 
