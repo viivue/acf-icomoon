@@ -4,7 +4,7 @@ Tags: Advanced Custom Fields, ACF, Icomoon
 Requires at least: 4.7
 Tested up to: 6.6.2
 Requires PHP: 7.4
-Stable tag: 4.0.14
+Stable tag: 4.0.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,7 +30,7 @@ This ACF field type is compatible with:
 
 == Changelog ==
 
-= 4.0.14 =
-*Release Date - 30 May 2025*
+= 4.0.15 =
+*Release Date - 20 June 2025*
 
-- Fix: Fix wrong relative path for selection.json.
+- Fix: Fix wrong icon path in WPBakery Page Builder param.
