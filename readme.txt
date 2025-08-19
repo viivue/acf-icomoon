@@ -2,9 +2,9 @@
 Contributors: viivue, daomapsieucap, phucbm
 Tags: Advanced Custom Fields, ACF, Icomoon
 Requires at least: 4.7
-Tested up to: 6.6.2
+Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 4.0.15
+Stable tag: 4.0.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,7 +30,8 @@ This ACF field type is compatible with:
 
 == Changelog ==
 
-= 4.0.15 =
-*Release Date - 20 June 2025*
+= 4.0.16 =
+*Release Date - 20 August 2025*
 
-- Fix: Fix wrong icon path in WPBakery Page Builder param.
+- Fixed: _load_textdomain_just_in_time was called incorrectly from WordPress 6.8.1
+- Fixed: Remove PHP deprecated notices for PHP 8.3.
