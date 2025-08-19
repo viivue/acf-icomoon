@@ -30,7 +30,8 @@ This ACF field type is compatible with:
 
 == Changelog ==
 
-= 4.0.15 =
-*Release Date - 20 June 2025*
+= 4.0.16 =
+*Release Date - 20 August 2025*
 
-- Fix: Fix wrong icon path in WPBakery Page Builder param.
+- Fixed: _load_textdomain_just_in_time was called incorrectly from WordPress 6.8.1
+- Fixed: Remove PHP deprecated notices for PHP 8.3.
