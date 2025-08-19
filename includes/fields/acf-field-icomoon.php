@@ -7,9 +7,34 @@ if(!defined('ABSPATH')){
 if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 	class ViiVue_ACF_Field_Icomoon extends acf_field{
 		/**
+		 * @var string The name of the field type
+		 */
+		public $name;
+		
+		/**
+		 * @var string The label of the field type
+		 */
+		public $label;
+		
+		/**
+		 * @var string The category the field appears within in the field type picker
+		 */
+		public $category;
+		
+		/**
+		 * @var array The default values for this field type
+		 */
+		public $defaults;
+		
+		/**
+		 * @var string The prefix used for icon classes
+		 */
+		public $prefix;
+		
+		/**
 		 * Set up the field type data
 		 */
-		function __construct(){
+		public function __construct(){
 			$this->name     = 'viivue_acf_icomoon';
 			$this->label    = __('Icomoon', 'acf-icomoon');
 			$this->category = 'content';
@@ -24,7 +49,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		/**
 		 * Create settings for this fields in ACF
 		 */
-		function render_field_settings($field){
+		public function render_field_settings($field){
 			// Admin field: Selection.json
 			acf_render_field_setting($field, [
 				'label'        => __('Selection.json', 'acf-icomoon'),
@@ -52,7 +77,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		/**
 		 *  Render HTML interface for ACF
 		 */
-		function render_field($field){
+		public function render_field($field){
 			// list of icons
 			$path       = viivue_get_icomoon_json_path(viivue_array_key_exists('selection_json_path', $field));
 			$icon_array = $this->viivue_get_icomoon_json($path);
@@ -79,7 +104,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		/**
 		 * HTML for ACF and VC
 		 */
-		function viivue_icomoon_select_html($icon_array, $value, $input_html, $vc_element = false): string{
+		public function viivue_icomoon_select_html($icon_array, $value, $input_html, $vc_element = false): string{
 			$class = $vc_element ? 'vc-element' : 'acf';
 			$html  = '';
 			
@@ -125,7 +150,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		/**
 		 * Get array of icons from json
 		 */
-		function viivue_get_icomoon_json($json_path = ''): array{
+		public function viivue_get_icomoon_json($json_path = ''): array{
 			global $vii_acf_icomoon_empty_json;
 			$icon_size  = 32;
 			$icon_array = [];
@@ -206,7 +231,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		/**
 		 *  Add assets, inherit from acf_field class
 		 */
-		function input_admin_enqueue_scripts(){
+		public function input_admin_enqueue_scripts(){
 			// easy popup
 			wp_register_style('viivue-acf-field-icomoon-easy-popup', ACFICOMOON_ASSETS_URL . "css/easy-popup.min.css", false, '0.0.2');
 			wp_register_script('viivue-acf-field-icomoon-easy-popup', ACFICOMOON_ASSETS_URL . "js/easy-popup.min.js", false, '0.0.2');
@@ -235,7 +260,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		/**
 		 *  This filter is applied to the $value after it is loaded from the db before it is returned to the template
 		 */
-		function format_value($value, $post_id, $field){
+		public function format_value($value, $post_id, $field){
 			if(empty($value)){
 				return $value;
 			}
@@ -253,17 +278,17 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 			}
 			
 			// return icon class
-			if($display_type == 'icon_class'){
+			if($display_type === 'icon_class'){
 				return viivue_array_key_exists('icon_class', $icon);
 			}
 			
 			// return svg
-			if($display_type == 'svg'){
+			if($display_type === 'svg'){
 				return viivue_array_key_exists('svg', $icon);
 			}
 			
 			// return array
-			if($display_type == 'array'){
+			if($display_type === 'array'){
 				return viivue_array_key_exists('data', $icon);
 			}
 			
