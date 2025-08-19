@@ -36,7 +36,7 @@ if(!class_exists('ViiVue_ACF_Field_Icomoon')){
 		 */
 		public function __construct(){
 			$this->name     = 'viivue_acf_icomoon';
-			$this->label    = __('Icomoon', 'acf-icomoon');
+			$this->label    = 'Icomoon';
 			$this->category = 'content';
 			$this->defaults = [
 				'selection_json_path' => viivue_acf_icomoon_default_json_option(),
