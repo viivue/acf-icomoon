@@ -172,7 +172,7 @@ if ( $icon_class ) {
 ## Changelog
 
 A complete listing of all notable changes to Support For Icomoon with Advanced Custom Fields is documented
-in [CHANGELOG.md](CHANGELOG.md).
+in [changelog.txt](changelog.txt).
 
 ## Contributing
 
