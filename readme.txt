@@ -4,7 +4,7 @@ Tags: Advanced Custom Fields, ACF, Icomoon
 Requires at least: 4.7
 Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 4.0.16
+Stable tag: 4.0.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,11 @@ This ACF field type is compatible with:
 3. Additional field for WPBakery Page Builder plugin (formerly Visual Composer)
 
 == Changelog ==
+
+= 4.0.17 =
+*Release Date - 6 November 2026*
+
+- Fixed: Icon field stuck on infinite loading in ACF blocks v3.
 
 = 4.0.16 =
 *Release Date - 20 August 2025*
