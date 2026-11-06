@@ -7,10 +7,8 @@
  <p align="center">A new ACF field that allows to select icon from <a href="https://icomoon.io" target="_blank">IcoMoon</a> json.</p>
 
  <p align="center">
-   <a href="https://github.com/viivue/acf-icomoon/releases/latest">
-   <img src="https://badgen.net/github/release/viivue/acf-icomoon/?cache=600">
-   </a><a href="https://wordpress.org/plugins/acf-icomoon/">
-   <img src="https://img.shields.io/badge/-WordPress-0273A9">
+   <a href="https://wordpress.org/plugins/acf-icomoon/">
+   <img src="https://img.shields.io/wordpress/plugin/v/acf-icomoon?label=WordPress&color=0273A9">
    </a>
     <a href="https://icomoon.io">
    <img src="https://img.shields.io/badge/-IcoMoon-29C3F9">
