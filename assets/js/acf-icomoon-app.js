@@ -18,6 +18,9 @@ acf.addAction('load_field/type=viivue_acf_icomoon', e => initIcomoonSelect(e));
 // watch for new fields via ACF
 acf.addAction('append_field/type=viivue_acf_icomoon', e => initIcomoonSelect(e));
 
+// ACF blocks v3 form only fires remount
+acf.addAction('remount_field/type=viivue_acf_icomoon', e => initIcomoonSelect(e));
+
 /**
  * VC After Element Render
  * @param panel
